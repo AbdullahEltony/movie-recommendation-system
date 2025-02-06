@@ -35,7 +35,7 @@ export default function Sidenav() {
 
   return (
     <>
-      <div className="w-48 h-screen text-white bg-sidenavBg border-r border-gray-800 hidden md:block">
+      <div className="w-48 h-screen text-white bg-sidenavBg border-r fixed z-50 border-gray-800 hidden md:block">
         <h1 className="p-4 text-2xl font-bold">Cinemate</h1>
         <ul className="space-y-4 mt-4">
           <h3 className="text-sm text-gray-400 pl-3">Menu</h3>

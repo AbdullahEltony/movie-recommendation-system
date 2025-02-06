@@ -29,7 +29,7 @@ const Menu = ({
     },
   ];
   return (
-    <ul className="border border-gray-900 bg-background grid grid-cols-2 gap-4 fixed bottom-20 right-5 p-4">
+    <ul className="border border-gray-900 bg-background grid grid-cols-2 gap-4 fixed bottom-20 right-5 p-4 z-50">
       {menueItems.map((item) => (
         <li
           onClick={() => setIsOpen(false)}

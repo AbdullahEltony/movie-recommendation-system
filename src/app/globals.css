@@ -14,3 +14,25 @@ body {
   color: var(--text);
   background: var(--main-bg);
 }
+.swiper {
+  width: 100%;
+  height:auto;
+  height:100vh;
+  z-index:-1
+}
+.swiper-slide {
+  max-height:500;
+}
+
+.swiper-slide img {
+  width: 1440px;
+  max-height:810px;
+  object-fit: cover;
+}
+.profile img{
+  width:25px;
+  height:25px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #fff
+}
