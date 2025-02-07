@@ -66,7 +66,7 @@ const HomeSlider = () => {
                       </span>
                       Watch Trailer
                     </button>
-                    <button className="bg-primary  text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:bg-transparent hover:text-white h-[40px]  sm:h-auto">
+                    <button className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary h-[40px]  sm:h-auto">
                       <span>
                         <BsExclamationCircle
                           size={18}

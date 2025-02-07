@@ -23,6 +23,9 @@ body {
 .swiper-slide {
   max-height:500;
 }
+img {
+  width:100%;
+}
 
 .swiper-slide img {
   width: 1440px;

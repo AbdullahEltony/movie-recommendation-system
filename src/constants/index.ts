@@ -6,6 +6,7 @@ import {
 } from "react-icons/ai";
 import { MdAddToQueue } from "react-icons/md";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import { PiSignInBold } from "react-icons/pi";
 
 
 export interface NavLink {
@@ -22,6 +23,7 @@ const icons = {
   Likes: AiOutlineHeart,
   Profile: AiOutlineUser,
   Settings: AiOutlineSetting,
+  Signin:PiSignInBold
 };
 
 export const mainLinks: NavLink[] = [
