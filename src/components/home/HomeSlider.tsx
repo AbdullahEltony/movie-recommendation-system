@@ -60,7 +60,7 @@ const HomeSlider = () => {
                     {slid.movieDesc}
                   </p>
                   <div className="flex gap-3 mt-3 justify-center sm:justify-start">
-                    <button className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto">
+                    <button className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto">
                       <span>
                         <FaRegPlayCircle size={16} fill="white" />
                       </span>

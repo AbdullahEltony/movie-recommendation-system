@@ -8,7 +8,6 @@ import { MdAddToQueue } from "react-icons/md";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
 
-
 export interface NavLink {
   name: string;
   href: string;
