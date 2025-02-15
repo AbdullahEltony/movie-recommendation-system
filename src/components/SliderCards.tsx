@@ -19,7 +19,7 @@ export default function MovieSlider(props: SliderProps) {
       slidesPerView={1}
       spaceBetween={props.sliderType === "top10" ? 80 :  20}
       navigation
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      // autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
@@ -29,7 +29,7 @@ export default function MovieSlider(props: SliderProps) {
       className={`movie-slider`}
     >
       {props.movieList.map((movie: movieType) => (
-        <SwiperSlide key={movie.id} className="movie-slider">
+        <SwiperSlide key={movie.id? movie.id : movie.title} className="movie-slider">
           <MovieCard
             id={movie.id}
             title={movie.title}

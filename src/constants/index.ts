@@ -28,8 +28,8 @@ const icons = {
 export const mainLinks: NavLink[] = [
   { name: "Home", href: "/", icon: "Home" },
   { name: "Movies", href: "/movies", icon: "Movies" },
-  { name: "Watchlist", href: "/watchlist", icon: "Watchlist" },
-  { name: "Likes", href: "/likes", icon: "Likes" },
+  { name: "Watchlist", href: "/profile/watchlist", icon: "Watchlist" },
+  { name: "Likes", href: "/profile/likes", icon: "Likes" },
 ];
 
 export const userLinks: NavLink[] = [

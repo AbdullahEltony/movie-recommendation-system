@@ -4,7 +4,7 @@ import { CiSearch } from "react-icons/ci";
 
 const NavbarSearch = () => {
   return (
-    <div className="bg-[#1e2526] rounded-3xl w-1/2 flex items-center ml-0 lg:ml-24 p-3 bg-opacity-80">
+    <div className="bg-[#1e2526] rounded-3xl w-[62%] sm:w-1/2 flex items-center ml-0 lg:ml-[2rem] p-3 bg-opacity-80">
       <CiSearch />
       <input
         type="text"
@@ -43,7 +43,7 @@ export const SearchModal = () => {
   ];
   return (
     <div className="fixed inset-0 z-50 bg-black/10 backdrop-blur-sm">
-      <div className="fixed left-[50%] top-[50%] min-h-[30rem] z-50 w-full flex flex-col max-w-lg translate-x-[-50%] translate-y-[-50%] gap-2 duration-500" id="search">
+      <div className="fixed p-4 left-[50%] top-[50%] min-h-[30rem] z-50 w-[88%] mx-auto bg-secondaryBg max-w-6xl flex flex-col translate-x-[-50%] translate-y-[-50%] gap-2 duration-500 rounded-lg" id="search">
         <span className="text-lg font-medium pl-3">Search</span>
         <div className="relative bg-[#111111] rounded-xl">
           <CiSearch className="absolute top-4 left-4 text-gray-400 w-6 h-6" />

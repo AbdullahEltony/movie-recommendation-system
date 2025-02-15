@@ -4,6 +4,7 @@ import Recommended from "@/components/home/Recommended";
 import Top10 from "@/components/home/Top10";
 import TopRated from "@/components/home/TopRated";
 import "swiper/css";
+
 export default function Home() {
   return (
     <div className="overflow-hidden mb-[70px]">
@@ -13,13 +14,13 @@ export default function Home() {
       <section>
         <Top10 />
       </section>
-      <section>
+      <section className="section">
         <TopRated />
       </section>
-      <section>
+      <section className="section">
         <Recommended />
       </section>
-      <section>
+      <section className="section">
         <Geners />
       </section>
     </div>

@@ -32,7 +32,7 @@ const HorizontalNav = ({ pathname }: { pathname: string }) => {
     <>
       <div className="w-full h-[60px] bg-opacity-15 fixed z-50 left-0 bottom-0 p-4 pt-0 block md:hidden backdrop-blur-md shadow-lg">
         <ul className="flex items-center justify-between px-3 bg-opacity-30 sm:px-5">
-          <li>
+          <li className="text-lg">
             <Link
               href="/"
               className={`flex flex-col gap-1 items-center px-4 py-2 ${

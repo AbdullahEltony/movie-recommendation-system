@@ -9,9 +9,10 @@ export default {
     extend: {
       colors: {
         background: "var(--main-bg)",
+        wrapperBg: "var(--wrapper-bg)",
         foreground: "var(--text)",
         primary: "var(--primary)",
-        sidenavBg: "var(--sidenav-bg)",
+        secondaryBg: "var(--secondary-bg)",
       },
     },
   },
