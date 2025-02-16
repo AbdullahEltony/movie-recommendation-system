@@ -159,19 +159,19 @@ export const topRatedMoviesData = [
     id: 1,
     title: "Movie 1",
     image:
-      "https://image.tmdb.org/t/p/original//lfRkUr7DYdHldAqi3PwdQGBRBPM.jpg",
+      "https://image.tmdb.org/t/p/original//75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
   },
   {
     id: 2,
     title: "Movie 2",
     image:
-      "https://image.tmdb.org/t/p/original//ode4BVDM0HDNTvpCy8XU9oB8NNq.jpg",
+      "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
   },
   {
     id: 3,
     title: "Movie 3",
     image:
-      "https://image.tmdb.org/t/p/original//tLejxaLJu8Qh5F2VKacWniMSZ3v.jpg",
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   },
   {
     id: 4,
@@ -221,19 +221,19 @@ export const recommendedMoviesData = [
     id: 1,
     title: "Movie 1",
     image:
-      "https://image.tmdb.org/t/p/original//lfRkUr7DYdHldAqi3PwdQGBRBPM.jpg",
+      "https://image.tmdb.org/t/p/original//75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
   },
   {
     id: 2,
     title: "Movie 2",
     image:
-      "https://image.tmdb.org/t/p/original//ode4BVDM0HDNTvpCy8XU9oB8NNq.jpg",
+      "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
   },
   {
     id: 3,
     title: "Movie 3",
     image:
-      "https://image.tmdb.org/t/p/original//tLejxaLJu8Qh5F2VKacWniMSZ3v.jpg",
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   },
   {
     id: 4,
