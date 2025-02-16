@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Sidenav from "@/components/Sidenav";
+import Navbar from "@/components/Navbar";
 // import Sidenav from "@/components/Sidebar";
 
 const geistSans = Geist({
@@ -22,10 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} antialiased`}>
-        <div className="flex">
-          <Sidenav />
-          <main>{children}</main>
-        </div>
+        <Sidenav />
+        <Navbar />
+        <main className="overflow-hidden ml-0 md:ml-48">{children}</main>
       </body>
     </html>
   );

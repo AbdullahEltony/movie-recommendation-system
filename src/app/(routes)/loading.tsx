@@ -1,6 +1,8 @@
+import { MovieGridSkeleton } from "@/components/skeletons"
+
 const loading = () => {
     return (
-        <div>loading....</div>
+        <MovieGridSkeleton/>
     )
 }
 

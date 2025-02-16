@@ -9,9 +9,17 @@ export default {
     extend: {
       colors: {
         background: "var(--main-bg)",
+        wrapperBg: "var(--wrapper-bg)",
         foreground: "var(--text)",
         primary: "var(--primary)",
-        sidenavBg: "var(--sidenav-bg)",
+        secondaryBg: "var(--secondary-bg)",
+      },
+    },
+    keyframes: {
+      shimmer: {
+        "100%": {
+          transform: "translateX(100%)",
+        },
       },
     },
   },

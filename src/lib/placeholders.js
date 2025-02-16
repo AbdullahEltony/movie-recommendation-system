@@ -1,0 +1,282 @@
+export const homeSlidesData = [
+  {
+    id: 1,
+    img: "https://image.tmdb.org/t/p/w780/mZzccLv3FFzgr51SF4JSeHiciuI.jpg",
+    name: "The Legend of Zelda",
+    year: "2022",
+    rating: 3,
+    geners: ["action", "comedy", "drama"],
+    movieDesc:
+      "this is sonic film and you can watch this movie on our website this is sonic film and you can watch this movie on our website",
+  },
+  {
+    id: 2,
+    img: "https://image.tmdb.org/t/p/w1280//xZm5YUNY3PlYD1Q4k7X8zd2V4AK.jpg",
+    name: "The Legend of Zelda",
+    year: "2022",
+    rating: 2,
+    geners: ["action", "comedy", "drama"],
+    movieDesc:
+      "this is sonic film and you can watch this movie on our website this is sonic film and you can watch this movie on our website",
+  },
+  {
+    id: 3,
+    img: "https://image.tmdb.org/t/p/original/zDn58IGLtNxDrEnEkO7JM814HiF.jpg",
+    name: "The Legend of Zelda",
+    rating: 4,
+    year: "2024",
+    geners: ["action", "comedy", "drama"],
+    movieDesc:
+      "this is sonic film and you can watch this movie on our website this is sonic film and you can watch this movie on our website",
+  },
+];
+export const movies = [
+  {
+    id:1,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:2,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:3,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:4,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:5,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:6,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:7,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:8,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:9,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+  {
+    id:10,
+    title:'movie1',
+    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
+    rating:4.3
+  },
+]
+export const top10MoviesData = [
+  {
+    id: 1,
+    title: "Movie 1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 2,
+    title: "Movie 2",
+    image:
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+  },
+  {
+    id: 3,
+    title: "Movie 3",
+    image:
+      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+  },
+  {
+    id: 4,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+  },
+  {
+    id: 5,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 6,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 7,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 8,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 9,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 10,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+];
+export const topRatedMoviesData = [
+  {
+    id: 1,
+    title: "Movie 1",
+    image:
+      "https://image.tmdb.org/t/p/original//lfRkUr7DYdHldAqi3PwdQGBRBPM.jpg",
+  },
+  {
+    id: 2,
+    title: "Movie 2",
+    image:
+      "https://image.tmdb.org/t/p/original//ode4BVDM0HDNTvpCy8XU9oB8NNq.jpg",
+  },
+  {
+    id: 3,
+    title: "Movie 3",
+    image:
+      "https://image.tmdb.org/t/p/original//tLejxaLJu8Qh5F2VKacWniMSZ3v.jpg",
+  },
+  {
+    id: 4,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+  },
+  {
+    id: 5,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 6,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 7,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 8,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 9,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 10,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+];
+export const recommendedMoviesData = [
+  {
+    id: 1,
+    title: "Movie 1",
+    image:
+      "https://image.tmdb.org/t/p/original//lfRkUr7DYdHldAqi3PwdQGBRBPM.jpg",
+  },
+  {
+    id: 2,
+    title: "Movie 2",
+    image:
+      "https://image.tmdb.org/t/p/original//ode4BVDM0HDNTvpCy8XU9oB8NNq.jpg",
+  },
+  {
+    id: 3,
+    title: "Movie 3",
+    image:
+      "https://image.tmdb.org/t/p/original//tLejxaLJu8Qh5F2VKacWniMSZ3v.jpg",
+  },
+  {
+    id: 4,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+  },
+  {
+    id: 5,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 6,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 7,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 8,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 9,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 10,
+    title: "Movie 4",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+];
+
+
