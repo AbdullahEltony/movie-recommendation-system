@@ -10,7 +10,7 @@ const ProfileHeader = () => {
         <div className="flex gap-4 items-center flex-wrap">
           <div className="border-2 border-primary p-1 rounded-full mx-auto sm:mx-0">
             <Image
-              src="https://image.tmdb.org/t/p/original//djLVFETFTvPyVUdrd7aLVykobof.jpg"
+              src="/user-profile.webp"
               alt="user profile"
               width={100}
               height={100}

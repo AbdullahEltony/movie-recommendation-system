@@ -3,10 +3,10 @@ import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { capitalizeString } from "@/lib/utils";
 const Tabs = () => {
-  const tabs = ["Likes", "Watchlist", "Reviews", "Recommended"];
+  const tabs = ["Profile","Likes", "Watchlist", "Reviews", "Recommended"];
   const router = useRouter();
   const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState<string>("")
+  const [activeTab, setActiveTab] = useState<string>("Profile")
     
 
   function clickHandler(name: string) {
@@ -24,10 +24,13 @@ const Tabs = () => {
       case "Recommended":
         router.push("/profile/recommended");
         break;
+      default:
+        router.push("/profile");
+        break;
     }
   }
   useEffect(() => {
-    setActiveTab(capitalizeString(pathname.split("/")[2]))
+    setActiveTab(capitalizeString(pathname.split("/")[2] ? pathname.split("/")[2] : "Profile"));
   },[activeTab, pathname])
   return (
     <div>
