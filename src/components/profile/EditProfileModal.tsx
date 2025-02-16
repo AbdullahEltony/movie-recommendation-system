@@ -57,7 +57,7 @@ export default function EditProfileModal({ onClose }: { onClose: () => void }) {
                   alt="Preview"
                   width={100}
                   height={100}
-                  className="w-20 h-20 rounded-lg object-cover"
+                  className="w-32 h-32 rounded-lg object-cover"
                 />
               </div>
             </div>

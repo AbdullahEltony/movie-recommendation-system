@@ -15,6 +15,13 @@ export default {
         secondaryBg: "var(--secondary-bg)",
       },
     },
+    keyframes: {
+      shimmer: {
+        "100%": {
+          transform: "translateX(100%)",
+        },
+      },
+    },
   },
   plugins: [],
 } satisfies Config;

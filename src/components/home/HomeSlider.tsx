@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-// No need for a separate CSS import
+
 import { AiFillStar } from "react-icons/ai";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { BsExclamationCircle } from "react-icons/bs";
@@ -32,11 +32,12 @@ const HomeSlider = () => {
               <Image
                 src={slid.img}
                 width={800}
-                priority={true}
                 height={800}
+                priority={false}
+                loading="lazy"
                 alt="Movie Poster"
               />
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.4)]  to-[rgba(0,0,0,1)] flex items-start md:items-center pt-28 md:pt-64 lg:pt-0">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.4)] to-black/90 flex items-start md:items-center pt-28 md:pt-64 lg:pt-0">
                 <div className="ml-2 md:ml-12 p-3 md-p-0 flex flex-col gap-3 max-w-xl text-center sm:text-left">
                   <h2 className="text-2xl sm:text-6xl mb-4">{slid.name}</h2>
                   <div className="flex gap-3 justify-center sm:justify-start">
@@ -60,13 +61,19 @@ const HomeSlider = () => {
                     {slid.movieDesc}
                   </p>
                   <div className="flex gap-3 mt-3 justify-center sm:justify-start">
-                    <button className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto">
+                    <button
+                      aria-label="Watch Trailer"
+                      className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto"
+                    >
                       <span>
                         <FaRegPlayCircle size={16} fill="white" />
                       </span>
                       Watch Trailer
                     </button>
-                    <button className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary h-[40px]  sm:h-auto">
+                    <button
+                      aria-label="More Info"
+                      className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary h-[40px]  sm:h-auto"
+                    >
                       <span>
                         <BsExclamationCircle
                           size={18}
@@ -76,7 +83,10 @@ const HomeSlider = () => {
                       </span>
                       More Info
                     </button>
-                    <button className="border border-primary  text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto">
+                    <button
+                      aria-label="Add to Watchlist"
+                      className="border border-primary  text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto"
+                    >
                       <span>
                         <FaRegBookmark size={18} color="black" fill="white" />
                       </span>
