@@ -19,7 +19,7 @@ export default function MovieSlider(props: SliderProps) {
       slidesPerView={1}
       spaceBetween={props.sliderType === "top10" ? 80 :  20}
       navigation
-      // autoplay={{ delay: 3000, disableOnInteraction: false }}
+      autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
