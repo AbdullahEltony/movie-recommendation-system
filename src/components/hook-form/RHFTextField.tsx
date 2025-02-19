@@ -26,7 +26,7 @@ const RHFTextField = ({ name, label, type, ...other }: RHFTextFieldProps) => {
             {...field}
             type={type === "password" ? (showPassword ? "text" : "password") : type}
             {...other}
-            className={`w-full bg-transparent text-sm mt-3 p-4 outline-none border ${error ? "border-red-500" :  'border-gray-800'} font-light rounded-lg focus:border ${error ? "focus:border-red-500" : "focus:border-subMain"}`}
+            className={`w-full bg-transparent text-sm mt-3 p-4 outline-none border ${error ? "border-red-500" :  'border-gray-800'} font-light rounded-lg focus:border `}
           />
           {type === "password" && <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-14">
             {showPassword ? <BsEyeSlash /> : <BsEye />}

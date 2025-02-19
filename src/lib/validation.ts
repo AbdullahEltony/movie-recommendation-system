@@ -11,7 +11,7 @@ export const LoginSchema = yup.object().shape({
     .min(6, "Password must be at least 6 characters long"),
 });
 export const RegisterSchema = yup.object().shape({
-  fullName: yup
+  username: yup
     .string()
     .required("Full name is required")
     .min(5, "Full name must be at least 6 characters long"),
@@ -19,8 +19,8 @@ export const RegisterSchema = yup.object().shape({
     .string()
     .required("Email is required")
     .email("Email must be a valid email address"),
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters long"),
+  password: yup.string().required("Password is required"),
+  gender: yup.string().required("Gender is required"),
+  birthdate: yup.date().required("Birthdate is required"),
+
 });

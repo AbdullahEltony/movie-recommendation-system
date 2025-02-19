@@ -40,7 +40,7 @@ const page = () => {
                   Movie Recommendations Based On Your Test
                 </h1>
                 <p className="text-xl mt-5">Find your favorite show for free</p>
-                <button className="text-xs md:text-lg bg-primary rounded-3xl px-5 md:px-5 py-3 mt-5">
+                <button className="text-xs md:text-lg bg-primary hover:scale-110 transition-all duration-200 rounded-3xl px-5 md:px-5 py-3 mt-5">
                   Calculate Your Test
                 </button>
               </div>
@@ -52,7 +52,7 @@ const page = () => {
                         src="https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg"
                         width={100}
                         height={100}
-                        alt="movie"
+                        alt="movie poster"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -72,7 +72,7 @@ const page = () => {
                         src="https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg"
                         width={100}
                         height={100}
-                        alt="movie"
+                        alt="movie poster"
                         className="w-full h-full object-cover"
                       />
                     </div>
