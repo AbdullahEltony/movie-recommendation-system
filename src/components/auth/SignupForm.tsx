@@ -9,10 +9,10 @@ import { CustomSelect, DatePickerComp } from "../Form";
 import { useState } from "react";
 
 const defaultValues = {
-  username: "abdo2002",
-  email: "abdo@example.com",
-  password: "********",
-  gender: "male",
+  username: "",
+  email: "",
+  password: "",
+  gender: "",
   birthdate: new Date(),
 };
 
