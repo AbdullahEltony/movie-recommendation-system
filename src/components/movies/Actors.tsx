@@ -53,7 +53,7 @@ export default function Actors() {
       <SectionTitle title="Actors" />
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 bg-secondaryBg p-[1rem] rounded-xl">
         {actors.map((actor, index) => (
-          <Link href="/actors/2" key={index}>
+          <Link href="/pages/actors/2" key={index}>
             <div className="flex items-center gap-4 hover:bg-gray-800 p-4 rounded-lg transition-all duration-300">
               <Image
                 src={actor.image}

@@ -13,6 +13,7 @@ export default {
         foreground: "var(--text)",
         primary: "var(--primary)",
         secondaryBg: "var(--secondary-bg)",
+        border: "var(--border)",
       },
     },
     keyframes: {

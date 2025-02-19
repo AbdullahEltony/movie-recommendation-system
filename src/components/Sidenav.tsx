@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mainLinks, userLinks, icons, NavLink } from "@/constants";
 import HorizontalNav from "./HorizontalNav";
+
 const renderLinks = (links: NavLink[], pathname: string) => {
   return links.map((link) => {
-    const Icon = icons[link.icon]; // Dynamically fetch the icon component
+    const Icon = icons[link.icon]; 
     const isActive = pathname === link.href;
 
     return (

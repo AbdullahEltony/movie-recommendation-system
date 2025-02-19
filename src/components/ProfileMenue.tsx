@@ -5,18 +5,20 @@ import Link from "next/link";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import Image from "next/image";
 import { BiChevronDown } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 
 const ProfileMenue = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
   const menueItems = [
     {
       name: "Profile",
-      href: "/profile",
+      href: "/pages/profile",
       icon: icons.Profile,
     },
     {
       name: "Settings",
-      href: "/settings",
+      href: "/pages/settings",
       icon: icons.Settings,
     },
   ];
@@ -30,9 +32,9 @@ const ProfileMenue = () => {
         className="profile flex gap-1 items-center"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="w-8 h-8 bg-black flex items-center justify-center rounded-full">
+        <div className="w-7 h-7 bg-primary flex items-center justify-center rounded-full">
           <Image
-            src="/user1.jpeg"
+            src="/user-profile.webp"
             alt="user"
             width={20}
             height={40}
@@ -46,16 +48,25 @@ const ProfileMenue = () => {
         <div className="w-32 p-3 absolute top-10 right-0 bg-gray-800 rounded">
           <ul className="space-y-3">
             {menueItems.map((item) => (
-              <li key={item.name}>
-                <Link href={item.href} className="flex items-center gap-3 hover:text-primary transition-all duration-150 ease-in-out">
+              <li key={item.name} onClick={() => setIsOpen(false)}>
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-3 hover:text-primary transition-all duration-150 ease-in-out"
+                >
                   <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
                   {item.name}
                 </Link>
               </li>
             ))}
             <li>
-              <button className="flex items-center hover:text-primary gap-3 transition-all duration-150 ease-in-out">
-                {<icons.Signin className="w-5 h-5 mr-3"/>}
+              <button
+                className="flex items-center hover:text-primary gap-3 transition-all duration-150 ease-in-out"
+                onClick={() => {
+                  setIsOpen(false);
+                  router.push("/");
+                }}
+              >
+                {<icons.Signin className="w-5 h-5 mr-3" />}
                 Log out
               </button>
             </li>

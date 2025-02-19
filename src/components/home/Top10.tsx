@@ -2,7 +2,7 @@ import MovieSlider from "../SliderCards";
 import { top10MoviesData } from "@/lib/placeholders";
 const Top10 = () => {
   return (
-    <div className="mx-[2rem] mt-64 sm:mt-32">
+    <div className="mx-[2rem] mt-12 sm:mt-24">
       <div className="flex gap-4 items-center mb-5">
         <h1 className="ml-3">
             <span className="text-stroke-primary !text-[40px] sm:!text-[80px] lg:!text-[128px] -mr-0 sm:-mr-3">T</span>

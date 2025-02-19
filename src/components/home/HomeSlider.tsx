@@ -19,23 +19,22 @@ const HomeSlider = () => {
       modules={[Navigation, Pagination, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
-      autoplay={{
-        delay: 4500,
-        disableOnInteraction: false,
-      }}
+      // autoplay={{
+      //   delay: 4500,
+      //   disableOnInteraction: false,
+      // }}
       loop={true}
     >
       {homeSlidesData.map((slid) => {
         return (
           <SwiperSlide key={slid.id}>
-            <div className="w-full relative">
+            <div className="w-full max-h-auto relative">
               <Image
                 src={slid.img}
-                width={800}
-                height={800}
-                priority={false}
-                loading="lazy"
+                width={700}
+                height={700}
                 alt="Movie Poster"
+                className="w-full !h-full min-h-[500px] object-cover"
               />
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.4)] to-black/90 flex items-start md:items-center pt-28 md:pt-64 lg:pt-0">
                 <div className="ml-2 md:ml-12 p-3 md-p-0 flex flex-col gap-3 max-w-xl text-center sm:text-left">
