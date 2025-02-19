@@ -221,21 +221,13 @@ export const recommendedMoviesData = [
     id: 1,
     title: "Movie 2",
     image:
-<<<<<<< HEAD
-      "https://image.tmdb.org/t/p/original//75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
-=======
       "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
->>>>>>> ui
   },
   {
     id: 2,
     title: "Movie 3",
     image:
-<<<<<<< HEAD
-      "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
-=======
       "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
->>>>>>> ui
   },
   {
     id: 3,
