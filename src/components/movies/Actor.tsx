@@ -1,49 +1,8 @@
 import Image from "next/image";
 import MovieCard from "../MovieCard";
-
+import { movies } from "@/lib/placeholders";
 export default function SingleActor() {
-  const movies = [
-    {
-      title: "I Man",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "Intellar",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "A  Unknown",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "Irom Man",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "Interellar",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "A Comete Unknown",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "Iron Man",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-    {
-      title: "Interstelar",
-      image:
-        "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-    },
-  ];
+  
 
   return (
     <>

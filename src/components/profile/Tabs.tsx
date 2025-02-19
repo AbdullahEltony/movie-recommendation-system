@@ -3,35 +3,34 @@ import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { capitalizeString } from "@/lib/utils";
 const Tabs = () => {
-  const tabs = ["Profile","Likes", "Watchlist", "Reviews", "Recommended"];
+  const tabs = ["Profile", "Likes", "Watchlist", "Reviews", "Recommended"];
   const router = useRouter();
   const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState<string>("Profile")
-    
+  const [activeTab, setActiveTab] = useState<string>("Profile");
 
   function clickHandler(name: string) {
     setActiveTab(name);
     switch (name) {
       case "Likes":
-        router.push("/profile/likes");
+        router.push("/pages/profile/likes");
         break;
       case "Watchlist":
-        router.push("/profile/watchlist");
+        router.push("/pages/profile/watchlist");
         break;
       case "Reviews":
-        router.push("/profile/reviews");
+        router.push("/pages/profile/reviews");
         break;
       case "Recommended":
-        router.push("/profile/recommended");
+        router.push("/pages/profile/recommended");
         break;
       default:
-        router.push("/profile");
-        break;
+        router.push("/pages/profile");
     }
   }
   useEffect(() => {
-    setActiveTab(capitalizeString(pathname.split("/")[2] ? pathname.split("/")[2] : "Profile"));
-  },[activeTab, pathname])
+    const path = pathname.split("/")[3];
+    setActiveTab(capitalizeString(path ? path : pathname.split("/")[2]));
+  }, [activeTab, pathname]);
   return (
     <div>
       {/* tabs */}

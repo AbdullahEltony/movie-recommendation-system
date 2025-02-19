@@ -1,7 +1,7 @@
 export const homeSlidesData = [
   {
     id: 1,
-    img: "https://image.tmdb.org/t/p/w780/mZzccLv3FFzgr51SF4JSeHiciuI.jpg",
+    img: "https://image.tmdb.org/t/p/original//zo8CIjJ2nfNOevqNajwMRO6Hwka.jpg",
     name: "The Legend of Zelda",
     year: "2022",
     rating: 3,
@@ -159,13 +159,13 @@ export const topRatedMoviesData = [
     id: 1,
     title: "Movie 1",
     image:
-      "https://image.tmdb.org/t/p/original//75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
+      "https://image.tmdb.org/t/p/original//nrlfJoxP1EkBVE9pU62L287Jl4D.jpg",
   },
   {
     id: 2,
     title: "Movie 2",
     image:
-      "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   },
   {
     id: 3,
@@ -177,7 +177,7 @@ export const topRatedMoviesData = [
     id: 4,
     title: "Movie 4",
     image:
-      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+      "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
   },
   {
     id: 5,
@@ -219,15 +219,23 @@ export const topRatedMoviesData = [
 export const recommendedMoviesData = [
   {
     id: 1,
-    title: "Movie 1",
+    title: "Movie 2",
     image:
+<<<<<<< HEAD
       "https://image.tmdb.org/t/p/original//75O9xgGobL0FIIgayMxwuL8PeLJ.jpg",
+=======
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+>>>>>>> ui
   },
   {
     id: 2,
-    title: "Movie 2",
+    title: "Movie 3",
     image:
+<<<<<<< HEAD
       "https://image.tmdb.org/t/p/original//TVvIyCsFCmLk9MRLbAZi4X8f32.jpg",
+=======
+      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+>>>>>>> ui
   },
   {
     id: 3,
