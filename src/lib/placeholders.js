@@ -158,14 +158,12 @@ export const topRatedMoviesData = [
   {
     id: 1,
     title: "Movie 1",
-    image:
-      "https://image.tmdb.org/t/p/original//nrlfJoxP1EkBVE9pU62L287Jl4D.jpg",
+    image: "https://image.tmdb.org/t/p/original//nrlfJoxP1EkBVE9pU62L287Jl4D.jpg",
   },
   {
     id: 2,
     title: "Movie 2",
-    image:
-      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    image:"https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   },
   {
     id: 3,
@@ -220,8 +218,8 @@ export const recommendedMoviesData = [
   {
     id: 1,
     title: "Movie 2",
-    image:
-      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+    image:"https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+
   },
   {
     id: 2,
