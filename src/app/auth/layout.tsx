@@ -23,6 +23,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
               src="/logo.svg"
               width={100}
               height={100}
+              priority
               alt="logo"
               className="mx-auto mb-6"
             />

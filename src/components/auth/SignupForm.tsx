@@ -7,6 +7,7 @@ import {RegisterSchema } from "@/lib/validation";
 import Link from "next/link";
 import { CustomSelect, DatePickerComp } from "../Form";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const defaultValues = {
   username: "",
@@ -17,6 +18,7 @@ const defaultValues = {
 };
 
 const SignupForm = () => {
+  const router = useRouter()
   const [date, setDate] = useState<Date | null>(new Date());
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
@@ -31,6 +33,8 @@ const SignupForm = () => {
   } = methods;
   const onSubmit = async (data: { email: string; password: string }) => {
     console.log(data);
+    router.push("/test")
+
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

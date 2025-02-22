@@ -23,7 +23,6 @@ const LoginForm = () => {
   } = methods;
   const onSubmit = async (data: { email: string; password: string }) => {
     console.log(data);
-    
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

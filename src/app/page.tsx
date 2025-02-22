@@ -27,7 +27,10 @@ const page = () => {
                 <span className="text-white bg-primary w-[5px] h-[5px] rounded-full absolute top-0 right-2"></span>
                 <IoIosNotificationsOutline size={24} />
               </button>
-              <Link href={"/auth/login"} className="text-xs md:text-sm bg-primary rounded-3xl px-3 md:px-5 pb-2 py-1 border border-transparent hover:border-white hover:bg-transparent transition-all duration-00">
+              <Link
+                href={"/auth/login"}
+                className="text-xs md:text-sm bg-primary rounded-3xl px-3 md:px-5 pb-2 py-1 border border-transparent hover:border-white hover:bg-transparent transition-all duration-00"
+              >
                 Login
               </Link>
             </div>
@@ -39,10 +42,16 @@ const page = () => {
                 <h1 className="text-3xl !leading-[40px] md:text-4xl font-semibold lg:text-5xl lg:!leading-[56px]">
                   Movie Recommendations Based On Your Test
                 </h1>
-                <p className="text-xl mt-5">Find your favorite show for free</p>
-                <button className="text-xs md:text-lg bg-primary hover:scale-110 transition-all duration-200 rounded-3xl px-5 md:px-5 py-3 mt-5">
-                  Calculate Your Test
-                </button>
+                <p className="text-xl mt-5">
+                  You can’t decide between thousands of movies available for
+                  streaming? Answer 6 questions and let us do the work!
+                </p>
+                <Link
+                  href="/auth/signup"
+                  className="text-xs text-center md:text-lg bg-primary hover:scale-110 transition-all duration-200 px-5 md:px-5 py-3 mt-5 inline-block"
+                >
+                 Start Now
+                </Link>
               </div>
               <div className="text-center md:text-start w-auto md:max-w-lg">
                 <ul className="w-full bg-secondaryBg p-4 relative overflow-auto custom-scrollbar flex flex-col gap-6 rounded-lg">
@@ -62,10 +71,12 @@ const page = () => {
                         DARK KNIGHT
                         <span className="text-sm text-primary">2008</span>
                       </h3>
-                      <p className="text-green-400 text-lg font-semibold mt-2">80% Match</p>
+                      <p className="text-green-400 text-lg font-semibold mt-2">
+                        80% Match
+                      </p>
                     </div>
                   </li>
-                 
+
                   <li className="flex gap-5 items-start">
                     <div className="rounded w-[70px] md:w-[90px]">
                       <Image
@@ -82,7 +93,9 @@ const page = () => {
                         DARK KNIGHT
                         <span className="text-sm text-primary">2008</span>
                       </h3>
-                      <p className="text-green-400 text-lg font-semibold mt-2">98% Match</p>
+                      <p className="text-green-400 text-lg font-semibold mt-2">
+                        98% Match
+                      </p>
                     </div>
                   </li>
                 </ul>
