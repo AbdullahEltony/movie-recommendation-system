@@ -1,80 +1,91 @@
 "use client";
-import React from "react";
-import { icons } from "@/constants";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import Image from "next/image";
-import { BiChevronDown } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import { CiLogout } from "react-icons/ci";
+import { LuUserRound } from "react-icons/lu";
+import { IoSettingsOutline } from "react-icons/io5";
 
-const ProfileMenue = () => {
+export default function ProfileMenu() {
   const router = useRouter();
-  const [isOpen, setIsOpen] = React.useState(false);
-  const menueItems = [
-    {
-      name: "Profile",
-      href: "/pages/profile",
-      icon: icons.Profile,
-    },
-    {
-      name: "Settings",
-      href: "/pages/settings",
-      icon: icons.Settings,
-    },
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  const menuItems = [
+    { name: "Profile", href: "/pages/profile", icon: LuUserRound },
+    { name: "Settings", href: "/pages/settings", icon: IoSettingsOutline },
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="ml-auto flex items-center gap-3 relative">
-      <div className="relative">
-        <span className="text-white bg-primary w-[5px] h-[5px] rounded-full absolute top-0 right-2"></span>
-        <IoIosNotificationsOutline size={24} />
-      </div>
+    <div className="relative" ref={menuRef}>
+      {/* Profile Button */}
       <button
-        className="profile flex gap-1 items-center"
+        className="flex gap-2 items-center px-2 py-1 bg-gray-900 hover:bg-gray-800 rounded-lg transition"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="w-7 h-7 bg-primary flex items-center justify-center rounded-full">
+        <div className="w-8 h-8 rounded-full border-2 border-primary">
           <Image
             src="/user-profile.webp"
             alt="user"
-            width={20}
-            height={40}
+            width={32}
+            height={32}
             className="rounded-full"
           />
         </div>
-
-        <BiChevronDown size={24} />
       </button>
-      {isOpen && (
-        <div className="w-32 p-3 absolute top-10 right-0 bg-gray-800 rounded">
-          <ul className="space-y-3">
-            {menueItems.map((item) => (
-              <li key={item.name} onClick={() => setIsOpen(false)}>
-                <Link
-                  href={item.href}
-                  className="flex items-center gap-3 hover:text-primary transition-all duration-150 ease-in-out"
-                >
-                  <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <button
-                className="flex items-center hover:text-primary gap-3 transition-all duration-150 ease-in-out"
-                onClick={() => {
-                  setIsOpen(false);
-                  router.push("/");
-                }}
+
+      {/* Dropdown Menu */}
+      <div
+        className={`absolute right-0 mt-3 w-40 bg-secondaryBg border border-red-500 rounded-lg shadow-lg transform ${
+          isOpen
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-95 pointer-events-none"
+        } transition-all duration-300`}
+      >
+        {/* Menu Items */}
+        <ul className="p-2">
+          {menuItems.map((item) => (
+            <li
+              key={item.name}
+              className="hover:bg-gray-700 rounded-lg transition"
+            >
+              <Link
+                href={item.href}
+                className="flex items-center gap-3 p-2 text-white"
+                onClick={() => setIsOpen(false)}
               >
-                {<icons.Signin className="w-5 h-5 mr-3" />}
-                Log out
-              </button>
+               <item.icon size={20} />
+                {item.name}
+              </Link>
             </li>
-          </ul>
-        </div>
-      )}
+          ))}
+          {/* Logout */}
+          <li className="hover:bg-gray-800 rounded-lg transition">
+            <button
+              className="w-full flex items-center gap-3 p-2"
+              onClick={() => {
+                setIsOpen(false);
+                router.push("/");
+              }}
+            >
+              <CiLogout size={20} />
+              Log out
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
-};
-
-export default ProfileMenue;
+}

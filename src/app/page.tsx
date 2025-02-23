@@ -35,69 +35,81 @@ const page = () => {
               </Link>
             </div>
           </div>
-          {/* content */}
-          <div className="w-full mt-16 md:mt-36 pl-0 2xl:pl-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full">
+          {/* Content */}
+          <div className="w-full mt-12 sm:mt-20 md:mt-32 lg:mt-20 pl-0 2xl:pl-24 mb-8 md:mb-0 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 w-full relative z-10">
+              {/* Text Section */}
               <div className="text-center md:text-start pr-0 lg:pr-5">
-                <h1 className="text-3xl !leading-[40px] md:text-4xl font-semibold lg:text-5xl lg:!leading-[56px]">
-                  Movie Recommendations Based On Your Test
+                <h1 className="text-2xl !leading-[40px] md:text-4xl font-semibold lg:text-4xl lg:!leading-[56px]">
+                  Find Your Next Favorite Movie with AI-Powered Recommendations!
+                  🎬
                 </h1>
-                <p className="text-xl mt-5">
-                  You can’t decide between thousands of movies available for
-                  streaming? Answer 6 questions and let us do the work!
+                <p className="text-lg md:text-xl mt-5 text-gray-300">
+                  Can’t decide between thousands of streaming movies? Rate a
+                  collection of movies, and let AI do the work!
                 </p>
                 <Link
                   href="/auth/signup"
-                  className="text-xs text-center md:text-lg bg-primary hover:scale-110 transition-all duration-200 px-5 md:px-5 py-3 mt-5 inline-block"
+                  className="flex w-fit items-center gap-5 text-xs rounded-3xl text-center md:text-lg bg-gradient-to-r from-primary to-red-500 hover:translate-y-[-3px] shadow-lg hover:shadow-red-500/50 transition-all duration-300 px-6 py-3 mt-5"
                 >
-                 Start Now
+                  <span>Start Now</span> 🚀
                 </Link>
               </div>
-              <div className="text-center md:text-start w-auto md:max-w-lg">
-                <ul className="w-full bg-secondaryBg p-4 relative overflow-auto custom-scrollbar flex flex-col gap-6 rounded-lg">
-                  <li className="flex gap-5 items-start">
-                    <div className="rounded w-[70px] md:w-[90px]">
-                      <Image
-                        src="https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg"
-                        width={100}
-                        height={100}
-                        alt="movie poster"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="flex gap-1 text-lg items-center">
-                        <span className="bg-primary w-[7px] h-5 rounded-full block"></span>
-                        DARK KNIGHT
-                        <span className="text-sm text-primary">2008</span>
-                      </h3>
-                      <p className="text-green-400 text-lg font-semibold mt-2">
-                        80% Match
-                      </p>
-                    </div>
-                  </li>
 
-                  <li className="flex gap-5 items-start">
-                    <div className="rounded w-[70px] md:w-[90px]">
-                      <Image
-                        src="https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg"
-                        width={100}
-                        height={100}
-                        alt="movie poster"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="flex gap-1 text-lg items-center">
-                        <span className="bg-primary w-[7px] h-5 rounded-full block"></span>
-                        DARK KNIGHT
-                        <span className="text-sm text-primary">2008</span>
-                      </h3>
-                      <p className="text-green-400 text-lg font-semibold mt-2">
-                        98% Match
-                      </p>
-                    </div>
-                  </li>
+              {/* Movie List */}
+              <div className="text-center md:text-start max-w-[400px] w-full mx-auto md:max-w-sm">
+                <ul className="w-full bg-secondaryBg p-4 relative max-h-[20rem] lg:max-h-[30rem] overflow-y-scroll custom-scrollbar flex flex-col gap-6 rounded-lg">
+                  {/* Movie Item */}
+                  {[
+                    {
+                      title: "The Dark Knight",
+                      year: "2008",
+                      match: "80%",
+                      img: "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+                    },
+                    {
+                      title: "Inception",
+                      year: "2010",
+                      match: "98%",
+                      img: "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+                    },
+                    {
+                      title: "Interstellar",
+                      year: "2014",
+                      match: "95%",
+                      img: "/test2.png",
+                    },
+                  ].map((movie, index) => (
+                    <li
+                      key={index}
+                      className="flex gap-5 items-start hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                    >
+                      <div className="rounded w-[70px] md:w-[90px] overflow-hidden">
+                        <Image
+                          src={movie.img}
+                          width={100}
+                          height={100}
+                          alt="movie poster"
+                          className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-all duration-300"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="flex gap-2 text-lg items-center">
+                          <span className="bg-primary w-[7px] h-5 rounded-full block"></span>
+                          {movie.title}{" "}
+                          <span className="text-sm text-primary">
+                            ({movie.year})
+                          </span>
+                        </h3>
+                        <p className="text-gray-400 text-sm">
+                          Action | Sci-Fi | Thriller
+                        </p>
+                        <p className="text-green-400 text-lg font-semibold mt-2">
+                          {movie.match} Match ✅
+                        </p>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

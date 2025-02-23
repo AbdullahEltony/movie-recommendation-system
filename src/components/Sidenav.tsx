@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mainLinks, userLinks, icons, NavLink } from "@/constants";
 import HorizontalNav from "./HorizontalNav";
+import Image from "next/image";
 
 const renderLinks = (links: NavLink[], pathname: string) => {
   return links.map((link) => {
-    const Icon = icons[link.icon]; 
+    const Icon = icons[link.icon];
     const isActive = pathname === link.href;
 
     return (
@@ -37,7 +38,15 @@ export default function Sidenav() {
   return (
     <>
       <div className="w-48 h-screen text-white bg-secondaryBg border-r fixed z-50 border-gray-800 hidden md:block">
-        <h1 className="p-4 text-2xl font-bold">Cinemate</h1>
+        <h1 className="p-4 text-2xl font-bold">
+          <Image
+            src="/logo.svg"
+            width={80}
+            height={70}
+            alt="logo"
+            className="mx-auto"
+          />
+        </h1>
         <ul className="space-y-4 mt-4">
           <h3 className="text-sm text-gray-400 pl-3">Menu</h3>
           {renderLinks(mainLinks, pathname)}
