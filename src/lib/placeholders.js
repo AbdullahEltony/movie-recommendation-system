@@ -32,66 +32,76 @@ export const homeSlidesData = [
 ];
 export const movies = [
   {
-    id:1,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 1,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:2,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 2,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:3,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 3,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:4,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 4,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:5,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 5,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:6,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 6,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:7,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 7,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:8,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 8,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:9,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 9,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
   {
-    id:10,
-    title:'movie1',
-    image:'https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg',
-    rating:4.3
+    id: 10,
+    title: "movie1",
+    image:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    rating: 4.3,
   },
-]
+];
 export const top10MoviesData = [
   {
     id: 1,
@@ -158,12 +168,14 @@ export const topRatedMoviesData = [
   {
     id: 1,
     title: "Movie 1",
-    image: "https://image.tmdb.org/t/p/original//nrlfJoxP1EkBVE9pU62L287Jl4D.jpg",
+    image:
+      "https://image.tmdb.org/t/p/original//nrlfJoxP1EkBVE9pU62L287Jl4D.jpg",
   },
   {
     id: 2,
     title: "Movie 2",
-    image:"https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    image:
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
   },
   {
     id: 3,
@@ -218,8 +230,8 @@ export const recommendedMoviesData = [
   {
     id: 1,
     title: "Movie 2",
-    image:"https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
-
+    image:
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
   },
   {
     id: 2,
@@ -277,4 +289,65 @@ export const recommendedMoviesData = [
   },
 ];
 
-
+export const testMovies = [
+  {
+    id: 1,
+    title: "The Shawshank Redemption",
+    poster:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 2,
+    title: "The Dark Knight",
+    poster:
+      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+  },
+  {
+    id: 3,
+    title: "Inception",
+    poster:
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+  },
+  {
+    id: 4,
+    title: "Interstellar",
+    poster:
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+  },
+  {
+    id: 5,
+    title: "Pulp Fiction",
+    poster:
+      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+  },
+  {
+    id: 6,
+    title: "The Shawshank Redemption",
+    poster:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+  },
+  {
+    id: 7,
+    title: "The Dark Knight",
+    poster:
+      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+  },
+  {
+    id: 8,
+    title: "Inception",
+    poster:
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+  },
+  {
+    id: 9,
+    title: "Interstellar",
+    poster:
+      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+  },
+  {
+    id: 10,
+    title: "Inception",
+    poster:
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+  },
+];

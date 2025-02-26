@@ -45,8 +45,8 @@ const page = () => {
                   🎬
                 </h1>
                 <p className="text-lg md:text-xl mt-5 text-gray-300">
-                  Can’t decide between thousands of streaming movies? Rate a
-                  collection of movies, and let AI do the work!
+                  your personalized movie recommendation system is here to help
+                  you discover your next favorite movie
                 </p>
                 <Link
                   href="/auth/signup"

@@ -7,6 +7,7 @@ const page = () => {
     <div className="pt-[5rem] mx-0 sm:mx-[2rem] mb-[4rem] md:mb-0">
       {/* filters */}
       <MoviesFilter/>
+      
       {/* grid */}
       <MoviesGrid movieList={topRatedMoviesData}/>
     </div>

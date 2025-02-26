@@ -38,15 +38,15 @@ export default function Sidenav() {
   return (
     <>
       <div className="w-48 h-screen text-white bg-secondaryBg border-r fixed z-50 border-gray-800 hidden md:block">
-        <h1 className="p-4 text-2xl font-bold">
+        <Link href={"/"} className="py-5">
           <Image
             src="/logo.svg"
             width={80}
             height={70}
             alt="logo"
-            className="mx-auto"
+            className="mx-auto w-[80px] h-[70px] object-contai mt-4"
           />
-        </h1>
+        </Link>
         <ul className="space-y-4 mt-4">
           <h3 className="text-sm text-gray-400 pl-3">Menu</h3>
           {renderLinks(mainLinks, pathname)}

@@ -5,8 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import RHFTextField from "../../components/hook-form/RHFTextField";
 import { LoginSchema } from "@/lib/validation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
@@ -22,7 +24,8 @@ const LoginForm = () => {
     // formState: { errors },
   } = methods;
   const onSubmit = async (data: { email: string; password: string }) => {
-    console.log(data);
+    console.log(data)
+    router.push("/pages");
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

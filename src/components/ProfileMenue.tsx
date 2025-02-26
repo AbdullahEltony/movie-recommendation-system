@@ -48,7 +48,7 @@ export default function ProfileMenu() {
 
       {/* Dropdown Menu */}
       <div
-        className={`absolute right-0 mt-3 w-40 bg-secondaryBg border border-red-500 rounded-lg shadow-lg transform ${
+        className={`absolute right-0 mt-2 w-40 bg-secondaryBg border border-red-500 rounded-lg shadow-lg transform ${
           isOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
