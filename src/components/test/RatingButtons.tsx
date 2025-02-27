@@ -1,4 +1,9 @@
-import { ratings } from "@/constants";
+const ratings = [
+  { label: "Awful", color: "bg-[#869FB4]" },
+  { label: "Meh", color: "bg-[#99896D]" },
+  { label: "Good", color: "bg-[#F9A11B]" },
+  { label: "Amazing", color: "bg-[#F26522]" },
+];
 
 interface RatingButtonsProps {
   rateMovie: (label: string, movieId: number, isSeen: boolean) => void;
@@ -14,7 +19,7 @@ const RatingButtons: React.FC<RatingButtonsProps> = ({
   return (
     <>
       <div className="flex relative justify-center -mt-10">
-        {ratings.map((rating, idx) => (
+        {ratings.map((rating: { label: string; color: string }, idx) => (
           <button
             key={rating.label}
             className={`w-[60px] h-[60px] md:w-[70px] md:h-[70px] rounded-full text-white font-semibold flex items-center justify-center border-2 border-white text-xs md:text-sm ${
