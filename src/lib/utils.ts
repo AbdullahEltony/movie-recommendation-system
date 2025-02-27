@@ -11,3 +11,8 @@ export const getProgress = (ratedCount: number, totalMovies: number) => {
 export const isRatingComplete = (ratedMovies: {label: string,movieId:number}[], minRatings: number) => {
   return ratedMovies.length >= minRatings;
 };
+
+const handleReview = ({rate}: {rate: number}) => {
+  
+  
+}

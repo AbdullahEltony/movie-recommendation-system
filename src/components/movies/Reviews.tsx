@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
@@ -54,6 +55,9 @@ export default function Reviews() {
         "https://image.tmdb.org/t/p/original//jPsLqiYGSofU4s6BjrxnefMfabb.jpg",
     },
   ];
+  const handleRating = (i: number) => {
+    setRating(i);
+  };
 
   return (
     <div className="bg-black rounded-lg mb-[4rem] section">
@@ -86,12 +90,20 @@ export default function Reviews() {
               </select>
 
               <div className="flex gap-1">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <FaRegStar
+                {Array.from({ length: rating }, (_, i) => (
+                  <button key={i} onClick={() => handleRating(i+1)}>
+                    <FaStar color="gold" className={`text-xl`} size={24} />
+                  </button>
+                ))}
+                {Array.from({ length: 5 - rating }, (_, i) => (
+                  <button
                     key={i}
-                    color='gold'
-                    className={`text-xl`}
-                  />
+                    onClick={() =>
+                      handleRating(i+1+rating)
+                    }
+                  >
+                    <FaRegStar color="gold" className={`text-xl`} size={24} />
+                  </button>
                 ))}
               </div>
             </div>
