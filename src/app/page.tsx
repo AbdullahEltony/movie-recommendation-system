@@ -45,8 +45,7 @@ const page = () => {
                   🎬
                 </h1>
                 <p className="text-lg md:text-xl mt-5 text-gray-300">
-                  your personalized movie recommendation system is here to help
-                  you discover your next favorite movie
+                  Can’t decide between thousands of streaming movies? let Us do the work!
                 </p>
                 <Link
                   href="/auth/signup"

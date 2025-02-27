@@ -289,65 +289,62 @@ export const recommendedMoviesData = [
   },
 ];
 
-export const testMovies = [
+export const moviesRates = [
   {
     id: 1,
-    title: "The Shawshank Redemption",
+    title: "the matrix",
     poster:
       "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    year:'2022'
   },
   {
     id: 2,
-    title: "The Dark Knight",
+    title: "the batman",
     poster:
-      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+    year:'2022'
   },
   {
     id: 3,
-    title: "Inception",
+    title: "movie star",
     poster:
-      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+      "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+    year:'2022'
   },
   {
     id: 4,
-    title: "Interstellar",
+    title: "Star Wars",
     poster:
-      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    year:'2022'
   },
   {
     id: 5,
-    title: "Pulp Fiction",
+    title: "Kill Bill",
     poster:
-      "https://image.tmdb.org/t/p/original//uuitWHpJwxD1wruFl2nZHIb4UGN.jpg",
+      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+    year: '2002',
   },
   {
     id: 6,
-    title: "The Shawshank Redemption",
-    poster:
-      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
-  },
-  {
-    id: 7,
-    title: "The Dark Knight",
+    title: "Red Notice",
     poster:
       "https://image.tmdb.org/t/p/original//aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+    year:'2022'
   },
   {
-    id: 8,
-    title: "Inception",
+    id: 1,
+    title: "The Professional",
+    poster:
+      "https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg",
+    year:'2022'
+  },
+  {
+    id: 2,
+    title: "Over the Moon",
     poster:
       "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
+    year:'2022'
   },
-  {
-    id: 9,
-    title: "Interstellar",
-    poster:
-      "https://image.tmdb.org/t/p/original//qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-  },
-  {
-    id: 10,
-    title: "Inception",
-    poster:
-      "https://image.tmdb.org/t/p/original//3L3l6LsiLGHkTG4RFB2aBA6BttB.jpg",
-  },
+  
 ];

@@ -98,6 +98,7 @@ body {
       rgb(143, 59, 59),
       rgb(56, 27, 27)
     ); /* Gradient colors */
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-stroke: 2px transparent; /* Hide default stroke */
   }
@@ -216,6 +217,6 @@ body {
 }
 
 .text-shdow-glow {
-  text-shadow: 0 0 10px rgba(183, 15, 15, 0.951),
-    0 0 20px rgba(172, 29, 29, 0.868);
+  text-shadow: 0 0 10px rgba(210, 35, 35, 0.791),
+    0 0 20px rgba(186, 27, 27, 0.781);
 }

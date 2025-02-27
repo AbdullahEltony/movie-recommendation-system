@@ -12,16 +12,13 @@ export default function Trailer() {
       <SectionTitle title="Trailer" />
       <div className="mt-4 relative rounded-lg overflow-hidden w-full h-[75vh] mb-[2rem]">
         {isPlaying ? (
-          // Embedded YouTube Video
           <iframe
             className="w-full h-full rounded-lg"
             src={`https://www.youtube.com/embed/iV46TJKL8cU?si=Jcm0QOB1ZJxU8RVS&&autoplay=1`}
             allowFullScreen
             allow="autoplay; encrypted-media"
-            
           />
         ) : (
-          // Thumbnail + Play Button
           <>
             <Image
               src="https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg"
