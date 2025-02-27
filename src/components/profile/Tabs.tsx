@@ -36,12 +36,12 @@ const Tabs = () => {
   return (
     <div>
       {/* tabs */}
-      <ul className="flex gap-4 mt-12 pb-4 border-b border-gray-600">
+      <ul className="flex gap-3 sm:gap-4 mt-12 pb-4 border-b border-gray-600">
         {tabs.map((tab) => (
           <button
             onClick={() => clickHandler(tab)}
             key={tab}
-            className={`text-lg hover:text-primary transition-all duration-300 ${
+            className={`text-[16px] sm:text-lg hover:text-primary transition-all duration-300 ${
               activeTab === tab ? "text-primary" : ""
             }`}
           >
