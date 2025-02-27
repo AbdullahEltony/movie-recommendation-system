@@ -37,6 +37,13 @@ export const userLinks: NavLink[] = [
   { name: "Settings", href: "/pages/settings", icon: "Settings" },
 ];
 
+export const ratings = [
+  { label: "Awful", color: "bg-[#869FB4]" },
+  { label: "Meh", color: "bg-[#99896D]" },
+  { label: "Good", color: "bg-[#F9A11B]" },
+  { label: "Amazing", color: "bg-[#F26522]" },
+];
+
 
 
 
