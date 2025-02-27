@@ -12,7 +12,4 @@ export const isRatingComplete = (ratedMovies: {label: string,movieId:number}[], 
   return ratedMovies.length >= minRatings;
 };
 
-const handleReview = ({rate}: {rate: number}) => {
-  
-  
-}
+
