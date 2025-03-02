@@ -17,14 +17,14 @@ export default function MovieSlider(props: SliderProps) {
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={1}
-      spaceBetween={props.sliderType === "top10" ? 80 :  20}
+      spaceBetween={props.sliderType === "top10" ? 70 :  20}
       navigation
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
-        1200: { slidesPerView: 5 },
+        1200: { slidesPerView: 4 },
       }}
       className={`movie-slider`}
     >
