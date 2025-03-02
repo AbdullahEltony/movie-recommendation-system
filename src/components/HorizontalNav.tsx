@@ -34,7 +34,7 @@ const HorizontalNav = ({ pathname }: { pathname: string }) => {
         <ul className="flex items-center justify-between px-3 bg-opacity-30 sm:px-5">
           <li className="text-lg">
             <Link
-              href="/"
+              href="/pages"
               className={`flex flex-col gap-1 items-center px-4 py-2 ${
                 pathname === "/" ? "text-primary" : ""
               }`}

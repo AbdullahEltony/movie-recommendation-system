@@ -49,7 +49,7 @@ const page = () => {
                 </p>
                 <Link
                   href="/auth/signup"
-                  className="flex w-fit items-center gap-5 text-xs rounded-3xl text-center md:text-lg bg-gradient-to-r from-primary to-red-500 hover:translate-y-[-3px] shadow-lg hover:shadow-red-500/50 transition-all duration-300 px-6 py-3 mt-5"
+                  className="flex w-fit mx-auto md:mx-0 items-center gap-5 text-xs rounded-3xl text-center md:text-lg bg-gradient-to-r from-primary to-red-500 hover:translate-y-[-3px] shadow-lg hover:shadow-red-500/50 transition-all duration-300 px-6 py-3 mt-5"
                 >
                   <span>Start Now</span> 🚀
                 </Link>
