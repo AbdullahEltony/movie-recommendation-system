@@ -3,45 +3,64 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import RHFTextField from "../../components/hook-form/RHFTextField";
-import {RegisterSchema } from "@/lib/validation";
+import { RegisterSchema } from "@/lib/validation";
 import Link from "next/link";
 import { CustomSelect, DatePickerComp } from "../Form";
 import { useState } from "react";
+import { AUTH_URL } from "@/constants";
 import { useRouter } from "next/navigation";
 
 const defaultValues = {
-  username: "",
+  fullName: "",
   email: "",
   password: "",
   gender: "",
-  birthdate: new Date(),
+  birthDate: new Date(),
 };
 
 const SignupForm = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [date, setDate] = useState<Date | null>(new Date());
+  const [serverError, setServerError] = useState<string | null>(null);
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
     defaultValues,
   });
 
-  const {
-    // reset,
-    // setError,
-    handleSubmit,
-    // formState: { errors },
-  } = methods;
+  const { reset, handleSubmit } = methods;
   const onSubmit = async (data: { email: string; password: string }) => {
-    console.log(data);
-    router.push("/test")
+    try {
+      const response = await fetch(`${AUTH_URL}register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
+      if (!response.ok) {
+        const error = await response.json();
+        throw Error(error);
+      }
+      router.push("/test");
+    } catch (error) {
+      reset();
+      setServerError(
+        error instanceof Error ? error.message : "An error occurred"
+      );
+    }
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        {serverError && (
+          <p className="text-red-500 me-auto text-center">{serverError}</p>
+        )}
+      </div>
       <div className="flex flex-col gap-6 w-full">
         <RHFTextField
-          name="username"
-          label="Username"
+          name="fullName"
+          label="Full Name"
           type="text"
           placeholder="john2002"
         />
@@ -61,7 +80,7 @@ const SignupForm = () => {
           <CustomSelect label="Gender" options={["Male", "Female"]} />
           <DatePickerComp
             label="Date of Birth"
-            startDate={date??new Date()}
+            startDate={date ?? new Date()}
             onChange={(date) => setDate(date)}
           />
         </div>

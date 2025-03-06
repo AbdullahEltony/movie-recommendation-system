@@ -37,7 +37,12 @@ export const userLinks: NavLink[] = [
   { name: "Settings", href: "/pages/settings", icon: "Settings" },
 ];
 
+// apis endpoints
+export const AUTH_URL = 'http://cinemate.runasp.net/api/Auth/'
 
+
+export const TRAILER_URL = ''
+export const IMAGEPOSTER = ''
 
 
 

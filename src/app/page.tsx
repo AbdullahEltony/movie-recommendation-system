@@ -29,7 +29,7 @@ const page = () => {
               </button>
               <Link
                 href={"/auth/login"}
-                className="text-xs md:text-sm bg-primary rounded-3xl px-3 md:px-5 pb-2 py-1 border border-transparent hover:border-white hover:bg-transparent transition-all duration-00"
+                className="text-xs md:text-sm bg-primary block w-[5rem] py-2 text-center rounded-3xl border border-transparent hover:border-white hover:bg-transparent transition-all duration-00"
               >
                 Login
               </Link>
