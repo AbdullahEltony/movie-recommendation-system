@@ -7,7 +7,7 @@ import Link from "next/link";
 import FormProvider from "../../components/hook-form/FormProvider";
 import RHFTextField from "../../components/hook-form/RHFTextField";
 import { LoginSchema } from "@/lib/validation";
-import { AUTH_URL } from "@/constants";
+
 
 interface LoginFormData {
   email: string;
@@ -35,17 +35,18 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
-      const response = await fetch(`${AUTH_URL}login`, {
+      const response = await fetch("/api/Auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      });
+      });;
 
       if (!response.ok) {
         const error = await response.json();
-        throw Error(error)
+        console.log(error)
+        throw Error(error.errors[1])
       }
 
       router.push('/pages')
@@ -63,7 +64,7 @@ const LoginForm = () => {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <div className="text-center">
         {!!errors.afterSubmit && (
-          <p className="text-red-500 me-auto text-start">
+          <p className="text-red-500 me-auto text-center">
             {errors.afterSubmit.message}
           </p>
         )}

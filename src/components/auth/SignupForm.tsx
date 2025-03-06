@@ -3,45 +3,53 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import RHFTextField from "../../components/hook-form/RHFTextField";
+import RHFSelectField from "../hook-form/RHFSelectField";
+import RHFDatePicker from "../hook-form/RHFDatePicker";
 import { RegisterSchema } from "@/lib/validation";
 import Link from "next/link";
-import { CustomSelect, DatePickerComp } from "../Form";
 import { useState } from "react";
-import { AUTH_URL } from "@/constants";
 import { useRouter } from "next/navigation";
+interface SignupFormData {
+  fullName: string;
+  email: string;
+  password: string;
+  gender: "Male" | "Female";
+  birthDate: Date;
+}
 
 const defaultValues = {
   fullName: "",
   email: "",
   password: "",
-  gender: "",
+  gender: undefined,
   birthDate: new Date(),
 };
 
 const SignupForm = () => {
   const router = useRouter();
-  const [date, setDate] = useState<Date | null>(new Date());
   const [serverError, setServerError] = useState<string | null>(null);
-  const methods = useForm({
+  const methods = useForm<SignupFormData>({
     resolver: yupResolver(RegisterSchema),
     defaultValues,
   });
 
   const { reset, handleSubmit } = methods;
-  const onSubmit = async (data: { email: string; password: string }) => {
+  const onSubmit = async (data: SignupFormData) => {
+    
     try {
-      const response = await fetch(`${AUTH_URL}register`, {
+      const formatedData = {birthDate: data.birthDate ? data.birthDate.toISOString() : null};
+      const response = await fetch(`/api/Auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formatedData),
       });
-
       if (!response.ok) {
         const error = await response.json();
-        throw Error(error);
+        throw Error(error.title);
       }
+      
       router.push("/test");
     } catch (error) {
       reset();
@@ -77,11 +85,10 @@ const SignupForm = () => {
           placeholder="********"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <CustomSelect label="Gender" options={["Male", "Female"]} />
-          <DatePickerComp
+          <RHFSelectField name='gender' label="Gender" options={["Male", "Female"]} />
+          <RHFDatePicker
+            name= "birthDate"
             label="Date of Birth"
-            startDate={date ?? new Date()}
-            onChange={(date) => setDate(date)}
           />
         </div>
         <div className="flex gap-6 items-center justify-center">

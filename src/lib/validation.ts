@@ -24,5 +24,9 @@ export const RegisterSchema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters long"),
-  
+  gender: yup
+    .mixed<"Male" | "Female">()
+    .oneOf(["Male", "Female"], "Gender is required")
+    .required(),
+  birthDate: yup.date().required("Birth date is required"),
 });

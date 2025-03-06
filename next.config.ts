@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://cinemate.runasp.net/api/:path*", // Proxy API requests
+      },
+    ];
+  },
 };
 
 export default nextConfig;
