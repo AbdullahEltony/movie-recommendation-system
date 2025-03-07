@@ -36,7 +36,7 @@ export default function VerifyEmail() {
         </p>
         <p className="text-gray-400 text-sm mt-3">Didn’t receive the email?</p>
         <button
-          className="text-red-400hover:underline"
+          className="text-red-400 hover:underline"
           onClick={() => reSendEmail(emailAddress)}
         >
           Resend
