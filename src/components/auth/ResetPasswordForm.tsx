@@ -50,10 +50,10 @@ const ResetPasswordForm = () => {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw Error(error);
+        console.log('error');
+        throw Error("Error resetting password");
       }
-      console.log( response.json());
+      console.log('resetted password');
     } catch (error) {
       reset();
       setServerError(error instanceof Error ? error.message : "An error occurred");
