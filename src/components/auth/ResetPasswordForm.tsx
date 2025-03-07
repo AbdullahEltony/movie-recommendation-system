@@ -11,12 +11,12 @@ import { useRouter } from "next/navigation";
 const ResetPasswordForm = () => {
   const router = useRouter()
   const [serverError, setServerError] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [code, setCode] = useState<string | null>(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
-      setUserId(urlParams.get("userId"));
+      setEmail(urlParams.get("email"));
       setCode(urlParams.get("code"));
     }
   }, [router]);
@@ -40,7 +40,7 @@ const ResetPasswordForm = () => {
   } = methods;
 
   const onSubmit = async (data: { newPassword: string }) => {
-    const formData = { ...data, userId, code };
+    const formData = { ...data, email, code };
 
     try {
       const response = await fetch(`/api/Auth/reset-password`, {
@@ -53,7 +53,7 @@ const ResetPasswordForm = () => {
         const error = await response.json();
         throw Error(error);
       }
-      console.log(await response.json());
+      console.log( response.json());
     } catch (error) {
       reset();
       setServerError(error instanceof Error ? error.message : "An error occurred");
