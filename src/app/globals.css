@@ -206,7 +206,8 @@ body {
   font-weight: 600 !important;
 }
 
-.react-datepicker__day--in-range {
+.react-datepicker__day--in-range,
+.react-datepicker__day--keyboard-selected {
   background-color: #d32f2f !important;
   color: #fff !important;
 }
@@ -224,6 +225,7 @@ body {
 .animate-heart {
   animation: heartBounce 0.3s ease-in-out;
 }
+
 
 @keyframes heartBounce {
   0% {

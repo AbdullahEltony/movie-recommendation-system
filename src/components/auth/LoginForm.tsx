@@ -8,11 +8,10 @@ import FormProvider from "../../components/hook-form/FormProvider";
 import RHFTextField from "../../components/hook-form/RHFTextField";
 import { LoginSchema } from "@/lib/validation";
 
-
 interface LoginFormData {
   email: string;
   password: string;
-  afterSubmit?:string
+  afterSubmit?: string;
 }
 
 const LoginForm = () => {
@@ -30,7 +29,7 @@ const LoginForm = () => {
     reset,
     setError,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = methods;
 
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
@@ -41,16 +40,15 @@ const LoginForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      });;
+      });
 
       if (!response.ok) {
         const error = await response.json();
-        console.log(error)
-        throw Error(error.errors[1])
+        console.log(error);
+        throw Error(error.errors[1]);
       }
 
-      router.push('/pages')
-
+      router.push("/pages");
     } catch (error) {
       reset();
       setError("afterSubmit", {
@@ -70,8 +68,18 @@ const LoginForm = () => {
         )}
       </div>
       <div className="flex flex-col gap-6 w-full">
-        <RHFTextField name="email" label="Email" type="email" placeholder="john@gmail.com" />
-        <RHFTextField name="password" label="Password" type="password" placeholder="********" />
+        <RHFTextField
+          name="email"
+          label="Email"
+          type="email"
+          placeholder="john@gmail.com"
+        />
+        <RHFTextField
+          name="password"
+          label="Password"
+          type="password"
+          placeholder="********"
+        />
         <Link
           href="/auth/forgot-password"
           className="text-lg text-center font-normal duration-300 hover:text-primary w-fit mx-auto my-4"
@@ -83,7 +91,17 @@ const LoginForm = () => {
             type="submit"
             className="bg-[linear-gradient(90deg,#ff0000,#800000)] hover:scale-105 transition-all duration-150 rounded-full px-12 py-2 sm:text-sm"
           >
-            Login
+            {isSubmitting ? (
+              <span className="flex items-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"
+                  viewBox="0 0 24 24"
+                ></svg>
+                Loading...
+              </span>
+            ) : (
+              "Login"
+            )}
           </button>
           <Link
             href="/"

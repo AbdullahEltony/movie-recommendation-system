@@ -8,7 +8,7 @@ export const LoginSchema = yup.object().shape({
   password: yup
     .string()
     .required("Password is required")
-    .min(6, "Password must be at least 6 characters long"),
+    .min(8, "Password must be at least 8 characters long"),
   afterSubmit: yup.string().optional(),
 });
 export const RegisterSchema = yup.object().shape({
@@ -23,10 +23,8 @@ export const RegisterSchema = yup.object().shape({
   password: yup
     .string()
     .required("Password is required")
-    .min(6, "Password must be at least 6 characters long"),
-  gender: yup
-    .mixed<"Male" | "Female">()
-    .oneOf(["Male", "Female"], "Gender is required")
-    .required(),
-  birthDate: yup.date().required("Birth date is required"),
+    .min(8, "Password must be at least 8 characters long"),
+    
+  gender: yup.string().required("Gender is required"),
+  birthDay: yup.date().required("Birth date is required"),
 });

@@ -5,10 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import RHFTextField from "../../components/hook-form/RHFTextField";
 import Link from "next/link";
 import * as yup from "yup";
-import { AUTH_URL } from "@/constants";
 import { useState } from "react";
+import SuccessModal from "../modals/SuccessSendEmail";
 
 const ForgotPasswordForm = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const methods = useForm({
     resolver: yupResolver(
@@ -24,10 +25,10 @@ const ForgotPasswordForm = () => {
     },
   });
 
-  const { reset, handleSubmit } = methods;
+  const { reset, handleSubmit,formState:{ isSubmitting } } = methods;
   const onSubmit = async (data: { email: string }) => {
     try {
-      const response = await fetch(`${AUTH_URL}forget-password`, {
+      const response = await fetch(`/api/Auth/forget-password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +41,8 @@ const ForgotPasswordForm = () => {
         throw Error(error);
       }
 
-      console.log(response.json());
+      setIsOpen(true);
+      reset();
     } catch (error) {
       reset();
       setServerError(
@@ -68,7 +70,17 @@ const ForgotPasswordForm = () => {
             type="submit"
             className="bg-[linear-gradient(90deg,#ff0000,#800000)] hover:scale-105 transition-all duration-150 rounded-full px-12 py-2 sm:text-sm"
           >
-            Send
+            {isSubmitting ? (
+              <span className="flex items-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"
+                  viewBox="0 0 24 24"
+                ></svg>
+                <span>Loading...</span>
+              </span>
+            ) : (
+              "Send"
+            )}
           </button>
           <Link
             href={"/"}
@@ -78,6 +90,7 @@ const ForgotPasswordForm = () => {
           </Link>
         </div>
       </div>
+      <SuccessModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </FormProvider>
   );
 };

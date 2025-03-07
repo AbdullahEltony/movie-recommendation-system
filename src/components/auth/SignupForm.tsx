@@ -9,20 +9,21 @@ import { RegisterSchema } from "@/lib/validation";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FormatDate } from "@/lib/utils";
 interface SignupFormData {
   fullName: string;
   email: string;
   password: string;
-  gender: "Male" | "Female";
-  birthDate: Date;
+  gender: string;
+  birthDay: Date;
 }
 
 const defaultValues = {
   fullName: "",
   email: "",
   password: "",
-  gender: undefined,
-  birthDate: new Date(),
+  gender: "Male",
+  birthDay: new Date(),
 };
 
 const SignupForm = () => {
@@ -33,24 +34,32 @@ const SignupForm = () => {
     defaultValues,
   });
 
-  const { reset, handleSubmit } = methods;
+  const {
+    reset,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
   const onSubmit = async (data: SignupFormData) => {
-    
     try {
-      const formatedData = {birthDate: data.birthDate ? data.birthDate.toISOString() : null};
+      const formattedData = { ...data, birthDay: FormatDate(data.birthDay) };
+      console.log(formattedData);
       const response = await fetch(`/api/Auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formatedData),
+        body: JSON.stringify(formattedData),
       });
       if (!response.ok) {
         const error = await response.json();
-        throw Error(error.title);
+        if (Array.isArray(error.errors)) {
+          throw Error(error.errors[1]);
+        } else {
+          throw Error(error.errors.Password);
+        }
       }
-      
-      router.push("/test");
+
+      router.push(`/auth/verifyEmail/${data.email}`);
     } catch (error) {
       reset();
       setServerError(
@@ -85,9 +94,14 @@ const SignupForm = () => {
           placeholder="********"
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <RHFSelectField name='gender' label="Gender" options={["Male", "Female"]} />
+          <RHFSelectField
+            name="gender"
+            label="Gender"
+            options={["Male", "Female"]}
+          />
           <RHFDatePicker
-            name= "birthDate"
+            control={methods.control}
+            name="birthDay"
             label="Date of Birth"
           />
         </div>
@@ -96,7 +110,17 @@ const SignupForm = () => {
             type="submit"
             className="bg-[linear-gradient(90deg,#ff0000,#800000)] hover:scale-105 transition-all duration-150 rounded-full px-12 py-2 sm:text-sm"
           >
-            Signup
+            {isSubmitting ? (
+              <span className="flex items-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"
+                  viewBox="0 0 24 24"
+                ></svg>
+                Loading...
+              </span>
+            ) : (
+              "Signup"
+            )}
           </button>
           <Link
             href={"/"}

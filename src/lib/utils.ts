@@ -13,3 +13,6 @@ export const isRatingComplete = (ratedMovies: {label: string,movieId:number}[], 
 };
 
 
+export const FormatDate = (date: Date) => {
+  return date.toISOString().split("T")[0];
+};
