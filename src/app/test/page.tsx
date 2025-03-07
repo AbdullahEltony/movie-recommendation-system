@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { moviesRates as movies } from "@/lib/placeholders";
 import Progress from "@/components/test/Progress";
 import MovieCard from "@/components/test/MovieCard";
@@ -21,6 +22,42 @@ const MovieRating = () => {
   const [result, setResult] = useState<Result[]>([]);
   const [isSkipped, setIsSkipped] = useState(true);
   const router = useRouter();
+  const [userId, setUserId] = useState<string | null>(null);
+  const [code, setCode] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      setUserId(urlParams.get("userId"));
+      setCode(urlParams.get("code"));
+    }
+  }, []);
+  const confirmEmail = async () => {
+    if (!userId || !code) return; // 🔹 Prevent API call if values are not set
+    try {
+      const response = await fetch(`/api/Auth/confirm-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, code }),
+      });
+
+      if (response.ok) {
+        console.log("Email confirmed successfully");
+      } else {
+        console.log("Error:", response);
+      }
+    } catch (error) {
+      console.log("Fetch error:", error);
+    }
+  };
+  useEffect(() => {
+    if (userId && code) {
+      confirmEmail();
+    }
+  }, [userId, code]);
+
   const rateMovie = (label: string, movieId: number, isSeen: boolean) => {
     if (isSeen) {
       setResult((prev) => [...prev, { label, movieId }]);

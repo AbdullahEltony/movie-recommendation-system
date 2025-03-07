@@ -50,7 +50,7 @@ const ResetPasswordForm = () => {
       });
 
       if (!response.ok) {
-        console.log('error');
+        console.log(response);
         throw Error("Error resetting password");
       }
       console.log('resetted password');

@@ -38,7 +38,7 @@ const ForgotPasswordForm = () => {
 
       if (!response.ok) {
         const error = await response.json();
-        throw Error(error);
+        throw Error(error.errors[1]);
       }
       console.log(response.json())
       setIsOpen(true);
