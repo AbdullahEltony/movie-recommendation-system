@@ -20,6 +20,7 @@ const ResetPasswordForm = () => {
       setCode(urlParams.get("code"));
     }
   }, [router]);
+  console.log(email, code);
 
   const methods = useForm({
     resolver: yupResolver(
@@ -40,8 +41,7 @@ const ResetPasswordForm = () => {
   } = methods;
 
   const onSubmit = async (data: { newPassword: string }) => {
-    const formData = { ...data, email, code };
-
+    const formData = {...data, email, code };
     try {
       const response = await fetch(`/api/Auth/reset-password`, {
         method: "POST",
