@@ -40,7 +40,7 @@ const ForgotPasswordForm = () => {
         const error = await response.json();
         throw Error(error);
       }
-
+      console.log(response.json())
       setIsOpen(true);
       reset();
     } catch (error) {
