@@ -59,6 +59,8 @@ export default function Reviews() {
     setRating(i);
   };
 
+  
+
   return (
     <div className="bg-black rounded-lg mb-[4rem] section">
       <SectionTitle title="Reviews" />

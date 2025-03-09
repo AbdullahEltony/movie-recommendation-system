@@ -1,9 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function VerifyEmail() {
   const { email } = useParams();
   const emailAddress = decodeURIComponent(email as string);
+  const [loading, setLoading] = useState(false);
 
   const reSendEmail = async (emailAddress: string) => {
     try {
@@ -20,6 +22,8 @@ export default function VerifyEmail() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,7 +43,17 @@ export default function VerifyEmail() {
           className="text-red-400 hover:underline"
           onClick={() => reSendEmail(emailAddress)}
         >
-          Resend
+          {loading ? (
+            <span className="flex items-center">
+              <svg
+                className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"
+                viewBox="0 0 24 24"
+              ></svg>
+              Loading...
+            </span>
+          ) : (
+            "Resend"
+          )}
         </button>
       </div>
     </div>
