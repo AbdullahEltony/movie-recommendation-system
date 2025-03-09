@@ -152,9 +152,9 @@ export default function Reviews() {
                     </div>
                   </div>
                   <p className="text-gray-400 text-sm mt-1">
-                    {truncateText(review.message, isExpanded, 50)}
+                    {truncateText(review.message, isExpanded, 10)}
                     <br />
-                    {review.message.length > 50 && (
+                    {review.message.length > 10 && (
                       <button onClick={() => setIsExpanded(!isExpanded)}>
                         {isExpanded ? "Read Less" : "Read More"}
                       </button>
