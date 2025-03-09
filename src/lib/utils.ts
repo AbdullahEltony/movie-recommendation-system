@@ -16,3 +16,10 @@ export const isRatingComplete = (ratedMovies: {label: string,movieId:number}[], 
 export const FormatDate = (date: Date) => {
   return date.toISOString().split("T")[0];
 };
+
+export const truncateText = (str: string,isExpanded:boolean, maxLength:number) => {
+  if (str.length > maxLength) {
+    return isExpanded ? str : `${str.substring(0, maxLength)}...`;
+  }
+  return str;
+}

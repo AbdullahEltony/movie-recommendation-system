@@ -3,10 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import SectionTitle from "../SectionTitle";
+import { truncateText } from "@/lib/utils";
 
 export default function Reviews() {
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const reviews = [
     {
@@ -59,8 +61,6 @@ export default function Reviews() {
     setRating(i);
   };
 
-  
-
   return (
     <div className="bg-black rounded-lg mb-[4rem] section">
       <SectionTitle title="Reviews" />
@@ -93,17 +93,12 @@ export default function Reviews() {
 
               <div className="flex gap-1">
                 {Array.from({ length: rating }, (_, i) => (
-                  <button key={i} onClick={() => handleRating(i+1)}>
+                  <button key={i} onClick={() => handleRating(i + 1)}>
                     <FaStar color="gold" className={`text-xl`} size={24} />
                   </button>
                 ))}
                 {Array.from({ length: 5 - rating }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() =>
-                      handleRating(i+1+rating)
-                    }
-                  >
+                  <button key={i} onClick={() => handleRating(i + 1 + rating)}>
                     <FaRegStar color="gold" className={`text-xl`} size={24} />
                   </button>
                 ))}
@@ -156,7 +151,15 @@ export default function Reviews() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-400 text-sm mt-1">{review.message}</p>
+                  <p className="text-gray-400 text-sm mt-1">
+                    {truncateText(review.message, isExpanded, 50)}
+                    <br />
+                    {review.message.length > 50 && (
+                      <button onClick={() => setIsExpanded(!isExpanded)}>
+                        {isExpanded ? "Read Less" : "Read More"}
+                      </button>
+                    )}
+                  </p>
                   <p className="text-gray-500 text-xs mt-1">{review.date}</p>
                 </div>
               </div>
