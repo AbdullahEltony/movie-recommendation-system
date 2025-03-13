@@ -40,7 +40,7 @@ const SignupForm = () => {
   } = methods;
   const onSubmit = async (data: SignupFormData) => {
     try {
-      const formattedData = { ...data, birthDay: FormatDate(data.birthDay) };
+      const formattedData = { ...data, birthDay:FormatDate(data.birthDay) };
       const response = await fetch(`/api/Auth/register`, {
         method: "POST",
         headers: {
@@ -110,10 +110,7 @@ const SignupForm = () => {
           >
             {isSubmitting ? (
               <span className="flex items-center">
-                <svg
-                  className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"
-                  viewBox="0 0 24 24"
-                ></svg>
+               <span className="custom-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"></span>
                 Loading...
               </span>
             ) : (
