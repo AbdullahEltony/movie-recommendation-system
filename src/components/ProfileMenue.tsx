@@ -78,6 +78,8 @@ export default function ProfileMenu() {
               onClick={() => {
                 setIsOpen(false);
                 router.push("/");
+                document.cookie =
+                  "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
               }}
             >
               <CiLogout size={20} />

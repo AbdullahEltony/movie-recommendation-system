@@ -35,14 +35,12 @@ const SignupForm = () => {
   });
 
   const {
-    reset,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
   const onSubmit = async (data: SignupFormData) => {
     try {
       const formattedData = { ...data, birthDay: FormatDate(data.birthDay) };
-      console.log(formattedData);
       const response = await fetch(`/api/Auth/register`, {
         method: "POST",
         headers: {
@@ -61,7 +59,7 @@ const SignupForm = () => {
 
       router.push(`/auth/verifyEmail/${data.email}`);
     } catch (error) {
-      reset();
+      
       setServerError(
         error instanceof Error ? error.message : "An error occurred"
       );

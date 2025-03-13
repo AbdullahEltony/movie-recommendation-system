@@ -8,6 +8,7 @@ import MovieCard from "@/components/test/MovieCard";
 import RatingButtons from "@/components/test/RatingButtons";
 import FinishTest from "@/components/test/FinishTest";
 import { useRouter } from "next/navigation";
+import withAuth from "@/hoc/WithAuth";
 
 interface Result {
   label: string;
@@ -44,7 +45,7 @@ const MovieRating = () => {
       });
 
       if (response.ok) {
-        console.log("Email confirmed successfully");
+        document.cookie = `token=${code}; path=/;`;
       } else {
         console.log("Error:", response);
       }
@@ -154,4 +155,4 @@ const MovieRating = () => {
   );
 };
 
-export default MovieRating;
+export default withAuth(MovieRating);

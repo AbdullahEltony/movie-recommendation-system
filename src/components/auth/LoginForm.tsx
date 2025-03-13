@@ -26,7 +26,6 @@ const LoginForm = () => {
   });
 
   const {
-    reset,
     setError,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -47,10 +46,10 @@ const LoginForm = () => {
         console.log(error);
         throw Error(error.errors[1]);
       }
-
+      const user = await response.json();
+      document.cookie = `token=${user.token}; path=/;`;
       router.push("/pages");
     } catch (error) {
-      reset();
       setError("afterSubmit", {
         type: "manual",
         message: error instanceof Error ? error.message : "An error occurred",
