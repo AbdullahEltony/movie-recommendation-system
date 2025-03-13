@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-export default function withAuth<T extends Record<string, unknown>>(Component: React.ComponentType<T>) {
+export default function withAuth<T extends object>(Component: React.ComponentType<T>) {
   return function AuthComponent(props: T) {
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,9 +16,9 @@ export default function withAuth<T extends Record<string, unknown>>(Component: R
       } else {
         setIsAuthenticated(true);
       }
-    }, []);
+    }, [router]);
 
-    if (!isAuthenticated) return null; 
+    if (!isAuthenticated) return null; // ✅ Prevent flashing of protected content
 
     return <Component {...props} />;
   };
