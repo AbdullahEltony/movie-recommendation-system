@@ -16,7 +16,7 @@ export default function withAuth<T extends object>(Component: React.ComponentTyp
       } else {
         setIsAuthenticated(true);
       }
-    }, [router, setIsAuthenticated]);
+    }, [router]);
 
     if (!isAuthenticated) {
       router.push("/auth/login");

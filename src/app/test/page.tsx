@@ -26,6 +26,7 @@ const MovieRating = () => {
   const [code, setCode] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log(userId, code);
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setUserId(urlParams.get("userId"));
@@ -33,7 +34,11 @@ const MovieRating = () => {
     }
   }, []);
   const confirmEmail = async () => {
-    if (!userId || !code) return; 
+    console.log(userId,code)
+    if (!userId || !code) {
+      console.log("Missing userId or code");
+      return;
+    }
     try {
       const response = await fetch(`/api/Auth/confirm-email`, {
         method: "POST",
@@ -56,6 +61,7 @@ const MovieRating = () => {
   useEffect(() => {
     if (userId && code) {
       confirmEmail();
+      console.log(document.cookie);
     }
   }, [userId, code]);
 
@@ -155,4 +161,4 @@ const MovieRating = () => {
   );
 };
 
-export default MovieRating
+export default MovieRating;
