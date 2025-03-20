@@ -10,15 +10,18 @@ export default function withAuth<T extends object>(Component: React.ComponentTyp
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-      const token = Cookies.get("token"); // ✅ Get token from cookies (client-side)
+      const token = Cookies.get("token");
       if (!token) {
-        router.push("/auth/login"); // ✅ Redirect if no token
+        setIsAuthenticated(false);
       } else {
         setIsAuthenticated(true);
       }
-    }, [router]);
+    }, [router, setIsAuthenticated]);
 
-    if (!isAuthenticated) return null; // ✅ Prevent flashing of protected content
+    if (!isAuthenticated) {
+      router.push("/auth/login");
+      return null;
+    };
 
     return <Component {...props} />;
   };

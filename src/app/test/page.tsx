@@ -34,7 +34,7 @@ const MovieRating = () => {
     }
   }, []);
   const confirmEmail = async () => {
-    if (!userId || !code) return; // 🔹 Prevent API call if values are not set
+    if (!userId || !code) return; 
     try {
       const response = await fetch(`/api/Auth/confirm-email`, {
         method: "POST",
@@ -43,6 +43,7 @@ const MovieRating = () => {
         },
         body: JSON.stringify({ userId, code }),
       });
+      console.log(response);
 
       if (response.ok) {
         document.cookie = `token=${code}; path=/;`;
@@ -107,7 +108,7 @@ const MovieRating = () => {
               </button>
 
               <button
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/pages")}
                 className="py-3 px-6 border border-gray-300 text-white font-semibold 
                          rounded-full hover:bg-gray-800 hover:border-gray-500 
                          transition-all duration-300"

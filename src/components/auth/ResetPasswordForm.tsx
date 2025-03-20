@@ -20,7 +20,6 @@ const ResetPasswordForm = () => {
       setCode(urlParams.get("code"));
     }
   }, [router]);
-  console.log(email, code);
 
   const methods = useForm({
     resolver: yupResolver(
