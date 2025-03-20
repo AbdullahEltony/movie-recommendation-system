@@ -8,6 +8,7 @@ import MovieCard from "@/components/test/MovieCard";
 import RatingButtons from "@/components/test/RatingButtons";
 import FinishTest from "@/components/test/FinishTest";
 import { useRouter } from "next/navigation";
+import withAuth from "@/hoc/WithAuth";
 
 interface Result {
   label: string;
@@ -26,7 +27,6 @@ const MovieRating = () => {
   const [code, setCode] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(userId, code);
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       setUserId(urlParams.get("userId"));
@@ -34,11 +34,7 @@ const MovieRating = () => {
     }
   }, []);
   const confirmEmail = async () => {
-    console.log(userId,code)
-    if (!userId || !code) {
-      console.log("Missing userId or code");
-      return;
-    }
+    if (!userId || !code) return; 
     try {
       const response = await fetch(`/api/Auth/confirm-email`, {
         method: "POST",
@@ -47,7 +43,6 @@ const MovieRating = () => {
         },
         body: JSON.stringify({ userId, code }),
       });
-      console.log(response);
 
       if (response.ok) {
         document.cookie = `token=${code}; path=/;`;
@@ -61,7 +56,6 @@ const MovieRating = () => {
   useEffect(() => {
     if (userId && code) {
       confirmEmail();
-      console.log(document.cookie);
     }
   }, [userId, code]);
 
@@ -113,7 +107,7 @@ const MovieRating = () => {
               </button>
 
               <button
-                onClick={() => router.push("/pages")}
+                onClick={() => router.push("/")}
                 className="py-3 px-6 border border-gray-300 text-white font-semibold 
                          rounded-full hover:bg-gray-800 hover:border-gray-500 
                          transition-all duration-300"
@@ -161,4 +155,4 @@ const MovieRating = () => {
   );
 };
 
-export default MovieRating;
+export default withAuth(MovieRating);
