@@ -4,7 +4,6 @@ import Trailer from "@/components/movies/Trailer";
 import Actors from "@/components/movies/Actors";
 import Reviews from "@/components/movies/Reviews";
 import SimilarMovies from "@/components/movies/SimilarMovies";
-
 import "react-toastify/dist/ReactToastify.css";
 import MovieInfo from "@/components/movies/MovieInfo";
 import { ToastContainer } from "react-toastify";

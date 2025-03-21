@@ -16,8 +16,15 @@ import { homeSlidesData } from "@/lib/placeholders";
 import Link from "next/link";
 import { useState } from "react";
 import TrailerModal from "../modals/TrailerModal";
+import { toast } from "react-toastify";
 const HomeSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const addToWatchlist = () => {
+    toast.success("Added to watchlist successfully!", {
+      position: "bottom-right",
+    });
+  };
   return (
     <>
       <Swiper
@@ -90,6 +97,7 @@ const HomeSlider = () => {
                         More Info
                       </Link>
                       <button
+                        onClick={addToWatchlist}
                         aria-label="Add to Watchlist"
                         className="border border-primary  text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto"
                       >
