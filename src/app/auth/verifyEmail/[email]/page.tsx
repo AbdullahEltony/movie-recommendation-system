@@ -1,4 +1,5 @@
 "use client";
+import SuccessModal from "@/components/modals/SuccessSendEmail";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
@@ -6,6 +7,7 @@ export default function VerifyEmail() {
   const { email } = useParams();
   const emailAddress = decodeURIComponent(email as string);
   const [loading, setLoading] = useState(false);
+  const [isOpen,setIsOpen] = useState(false)
 
   const reSendEmail = async (emailAddress: string) => {
     try {
@@ -19,6 +21,7 @@ export default function VerifyEmail() {
 
       if (response.ok) {
         console.log("Email re-sent successfully");
+        setIsOpen(true);
       }
     } catch (error) {
       console.log(error);
@@ -56,6 +59,7 @@ export default function VerifyEmail() {
           )}
         </button>
       </div>
+      <SuccessModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 }
