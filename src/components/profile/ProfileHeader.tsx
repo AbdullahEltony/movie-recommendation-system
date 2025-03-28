@@ -23,7 +23,7 @@ const ProfileHeader = () => {
             )}
             {!profileImage && (
               <Image
-                src="/user-profile.webp"
+                src="/ueser-placeholder.jpg"
                 alt="user profile"
                 width={100}
                 height={100}
