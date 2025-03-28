@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface UserState {
-    name: string | null;
-    profileImage: string | null;
-  }
-  
-  const initialState: UserState = {
-    name: JSON.parse(localStorage.getItem("user") || "{}").name || null,
-    profileImage: JSON.parse(localStorage.getItem("user") || "{}").profileImage || null,
-  };
+  name: string | null;
+  profileImage: string | null;
+}
+
+const initialState: UserState = {
+  name: null,
+  profileImage: null,
+};
 
 const userSlice = createSlice({
   name: "user",
@@ -17,11 +17,16 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.name = action.payload.name;
       state.profileImage = action.payload.profileImage;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      }
     },
     clearUser: (state) => {
       state.name = null;
       state.profileImage = null;
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("user");
+      }
     },
   },
 });
