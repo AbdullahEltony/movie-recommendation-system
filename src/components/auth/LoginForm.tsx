@@ -7,6 +7,8 @@ import Link from "next/link";
 import FormProvider from "../../components/hook-form/FormProvider";
 import RHFTextField from "../../components/hook-form/RHFTextField";
 import { LoginSchema } from "@/lib/validation";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/slices/userSlice";
 
 interface LoginFormData {
   email: string;
@@ -16,6 +18,7 @@ interface LoginFormData {
 
 const LoginForm = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const methods = useForm<LoginFormData>({
     resolver: yupResolver(LoginSchema),
@@ -47,6 +50,12 @@ const LoginForm = () => {
         throw Error(error.errors[1]);
       }
       const user = await response.json();
+      dispatch(
+        setUser({
+          name: "Abdullah",
+          profileImage: null,
+        })
+      );
       document.cookie = `token=${user.token}; path=/;`;
       router.push("/pages");
     } catch (error) {

@@ -2,20 +2,34 @@
 import Image from "next/image";
 import { useState } from "react";
 import EditProfileModal from "./EditProfileModal";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 const ProfileHeader = () => {
+  const { profileImage } = useSelector((state: RootState) => state.user);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <header className="flex flex-col sm:flex-row justify-between items-center gap-8">
         <div className="flex gap-4 items-center flex-wrap">
           <div className="border-2 border-primary p-1 rounded-full mx-auto sm:mx-0">
-            <Image
-              src="/user-profile.webp"
-              alt="user profile"
-              width={100}
-              height={100}
-              className="w-16 h-16 sm:w-32 sm:h-32 rounded-full object-cover"
-            />
+            {profileImage && (
+              <Image
+                src={profileImage}
+                alt="user profile"
+                width={100}
+                height={100}
+                className="w-16 h-16 sm:w-32 sm:h-32 rounded-full object-cover"
+              />
+            )}
+            {!profileImage && (
+              <Image
+                src="/user-profile.webp"
+                alt="user profile"
+                width={100}
+                height={100}
+                className="w-16 h-16 sm:w-32 sm:h-32 rounded-full object-cover"
+              />
+            )}
           </div>
           <div className="flex items-center">
             <span className="block w-[6px] h-6 rounded-xl bg-primary mr-2"></span>

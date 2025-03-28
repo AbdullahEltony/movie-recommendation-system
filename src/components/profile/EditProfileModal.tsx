@@ -3,14 +3,18 @@ import { useState } from "react";
 import Image from "next/image";
 import { FiUploadCloud } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/slices/userSlice";
 
 export default function EditProfileModal({ onClose }: { onClose: () => void }) {
   const [castName, setCastName] = useState("");
   const [image, setImage] = useState<File | null>(null);
+  const dispatch = useDispatch()
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       setImage(event.target.files[0]);
+      dispatch(setUser({profileImage: URL.createObjectURL(event.target.files[0])}))
     }
   };
 

@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useState } from "react";
 import TrailerModal from "../modals/TrailerModal";
 import { toast } from "react-toastify";
+// import useFetch from "@/hooks/useFetch";
 const HomeSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,6 +26,8 @@ const HomeSlider = () => {
       position: "bottom-right",
     });
   };
+
+  // const data = useFetch("/api/movies");
   return (
     <>
       <Swiper

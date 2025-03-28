@@ -6,8 +6,12 @@ import { useRouter } from "next/navigation";
 import { CiLogout } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export default function ProfileMenu() {
+  const { name, profileImage } = useSelector((state: RootState) => state.user);
+
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -32,17 +36,21 @@ export default function ProfileMenu() {
     <div className="relative" ref={menuRef}>
       {/* Profile Button */}
       <button
-        className="flex gap-2 items-center px-2 py-1 bg-gray-900 hover:bg-gray-800 rounded-lg transition"
+        className="flex gap-2 items-center px-2 py-1  hover:bg-gray-800 rounded-lg transition"
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="w-8 h-8 rounded-full border-2 border-primary">
-          <Image
-            src="/user-profile.webp"
-            alt="user"
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
+          {profileImage ? (
+            <Image
+              src={profileImage}
+              alt="user"
+              width={32}
+              height={32}
+              className="w-full h-full rounded-full object-contain"
+            />
+          ) : (
+            <span className="text-white text-lg font-semibold">{name?.charAt(0).toUpperCase()}</span>
+          )}
         </div>
       </button>
 
@@ -66,7 +74,7 @@ export default function ProfileMenu() {
                 className="flex items-center gap-3 p-2 text-white"
                 onClick={() => setIsOpen(false)}
               >
-               <item.icon size={20} />
+                <item.icon size={20} />
                 {item.name}
               </Link>
             </li>
