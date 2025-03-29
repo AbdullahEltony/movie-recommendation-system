@@ -1,8 +1,17 @@
+"use client";
+
+import useFetch from "@/hooks/useFetch";
 import MovieSlider from "../SliderCards";
-import { top10MoviesData } from "@/lib/placeholders";
-const Top10 = async () => {
-  // const res = await fetch('https://api.example.com/data', { cache: 'no-store' });
-  // const data = await res.json();
+
+interface Movie {
+  id: number;
+  movieId: number;
+  tmdbId: number;
+  title: string;
+  poster_path: string;
+}
+const Top10 = () => {
+  const { data , loading } = useFetch<Movie[]>("/api/Movie/top-ten");
   return (
     <div className="mx-[2rem] mt-12 sm:mt-24">
       <div className="flex gap-4 items-center mb-5">
@@ -28,7 +37,7 @@ const Top10 = async () => {
           <br /> today
         </span>
       </div>
-      <MovieSlider sliderType="top10" movieList={top10MoviesData} />
+      <MovieSlider sliderType="top10" movieList={data} loading={loading} />
     </div>
   );
 };

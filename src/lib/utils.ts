@@ -23,3 +23,10 @@ export const truncateText = (str: string,isExpanded:boolean, maxLength:number) =
   }
   return str;
 }
+
+export function formatDuration(minutes:number | undefined) {
+  if(!minutes) return "";
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return `${hours}h ${mins}m`;
+}

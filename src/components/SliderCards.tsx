@@ -5,11 +5,20 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import MovieCard from "./MovieCard"
-import { movieType } from "@/lib/types";
+import MovieCard from "./MovieCard";
+import { CardSkeleton } from "./skeletons";
 interface SliderProps {
-  movieList: movieType[];
-  sliderType: string
+  movieList:
+    | {
+        id?: number;
+        movieId: number;
+        tmdbId: number;
+        title: string;
+        poster_path: string;
+      }[]
+    | null;
+  sliderType: string;
+  loading: boolean;
 }
 
 export default function MovieSlider(props: SliderProps) {
@@ -17,7 +26,7 @@ export default function MovieSlider(props: SliderProps) {
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={1}
-      spaceBetween={props.sliderType === "top10" ? 70 :  20}
+      spaceBetween={props.sliderType === "top10" ? 70 : 20}
       navigation
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
@@ -28,16 +37,23 @@ export default function MovieSlider(props: SliderProps) {
       }}
       className={`movie-slider`}
     >
-      {props.movieList.map((movie: movieType) => (
-        <SwiperSlide key={movie.id? movie.id : movie.title} className="movie-slider">
-          <MovieCard
-            id={movie.id}
-            title={movie.title}
-            image={movie.image}
-            cardType={props.sliderType}
-          />
-        </SwiperSlide>
-      ))}
+      {props.loading ? (
+        <CardSkeleton />
+      ) : (
+        <>
+          {props.movieList?.map((movie, i) => (
+            <SwiperSlide key={movie.tmdbId} className="movie-slider">
+              <MovieCard
+                id={i+1}
+                tmdbid={movie.tmdbId}
+                title={movie.title}
+                image={`https://image.tmdb.org/t/p/original//${movie.poster_path}`}
+                cardType={props.sliderType}
+              />
+            </SwiperSlide>
+          ))}
+        </>
+      )}
     </Swiper>
   );
 }

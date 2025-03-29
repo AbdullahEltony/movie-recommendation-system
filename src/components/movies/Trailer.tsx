@@ -3,8 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 import SectionTitle from "../SectionTitle";
 import { IoPlay } from "react-icons/io5";
+import { IMAGEPOSTER } from "@/constants";
 
-export default function Trailer() {
+export default function Trailer({ trailer, image }:{trailer:string | undefined, image:string | undefined}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -14,14 +15,14 @@ export default function Trailer() {
         {isPlaying ? (
           <iframe
             className="w-full h-full rounded-lg"
-            src={`https://www.youtube.com/embed/iV46TJKL8cU?si=Jcm0QOB1ZJxU8RVS&&autoplay=1`}
+            src={`https://www.youtube.com/embed/${trailer}?si=Jcm0QOB1ZJxU8RVS&&autoplay=1`}
             allowFullScreen
             allow="autoplay; encrypted-media"
           />
         ) : (
           <>
             <Image
-              src="https://image.tmdb.org/t/p/original//d8Ryb8AunYAuycVKDp5HpdWPKgC.jpg"
+              src={IMAGEPOSTER + image}
               alt="Trailer Thumbnail"
               width={1000}
               height={500}

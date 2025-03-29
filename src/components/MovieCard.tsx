@@ -4,6 +4,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa6";
 interface MovieCardProps {
   id?: number;
+  tmdbid: number;
   title: string;
   image: string;
   rating?: number;
@@ -13,7 +14,7 @@ interface MovieCardProps {
 const MovieCard = (movie: MovieCardProps) => {
   if (movie.cardType === "top10") {
     return (
-      <Link href={`/pages/movies/${movie.id}`}>
+      <Link href={`/pages/movies/${movie.tmdbid}`}>
         <div className="movie-card flex items-end group">
           <span
             className={`!text-[90px] lg:!text-[128px] -z-10 absolute text-stroke-primary -bottom-2 sm:-bottom-6 md:-bottom-8 ${
@@ -40,7 +41,7 @@ const MovieCard = (movie: MovieCardProps) => {
     );
   } else {
     return (
-      <Link href={`/pages/movies/${movie.id}`}>
+      <Link href={`/pages/movies/${movie.tmdbid}`}>
         <div className="relative group overflow-hidden rounded-lg">
           <Image
             src={movie.image}

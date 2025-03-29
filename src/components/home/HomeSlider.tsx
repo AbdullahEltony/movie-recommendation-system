@@ -12,12 +12,14 @@ import { FaRegBookmark } from "react-icons/fa6";
 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
-import { homeSlidesData } from "@/lib/placeholders";
 import Link from "next/link";
 import { useState } from "react";
 import TrailerModal from "../modals/TrailerModal";
 import { toast } from "react-toastify";
-// import useFetch from "@/hooks/useFetch";
+import useFetch from "@/hooks/useFetch";
+import { Movie } from "@/lib/types";
+import { HomeSliderSkeleton } from "../skeletons";
+
 const HomeSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +29,8 @@ const HomeSlider = () => {
     });
   };
 
-  // const data = useFetch("/api/movies");
+  const { data: movies,loading } = useFetch<Movie[]>("/api/Movie/random-movie");
+   
   return (
     <>
       <Swiper
@@ -40,39 +43,40 @@ const HomeSlider = () => {
         }}
         loop={true}
       >
-        {homeSlidesData.map((slid) => {
+        {loading && HomeSliderSkeleton()}
+        {movies?.map((slid) => {
           return (
-            <SwiperSlide key={slid.id}>
-              <div className="w-full max-h-auto relative">
+            <SwiperSlide key={slid.movieId}>
+              <div className="w-full relative">
                 <Image
-                  src={slid.img}
+                  src={`https://image.tmdb.org/t/p/original//${slid.poster_path}`}
                   width={700}
                   height={700}
                   alt="Movie Poster"
-                  className="w-full !h-full min-h-[500px] object-cover"
+                  className="w-full max-h-[700px] object-cover"
                 />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.4)] to-black/90 flex items-start md:items-center pt-28 md:pt-64 lg:pt-0">
                   <div className="ml-2 md:ml-12 p-3 md-p-0 flex flex-col gap-3 max-w-xl text-center sm:text-left">
-                    <h2 className="text-2xl sm:text-6xl mb-4">{slid.name}</h2>
+                    <h2 className="text-2xl sm:text-6xl mb-4">{slid.title}</h2>
                     <div className="flex gap-3 justify-center sm:justify-start">
                       <span className="flex basis-auto items-center bg-primary rounded-xl text-xs font-semibold text-black px-3">
                         HD
                       </span>
                       <div className="flex basis-auto items-center">
                         <AiFillStar className="text-primary" />
-                        <span>{slid.rating}</span>
+                        <span>{3}</span>
                       </div>
-                      <span>{slid.year}</span>
+                      <span>{slid.release_date}</span>
                     </div>
                     <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
-                      {slid.geners.map((gen, i) => (
+                      {slid.genresDetails.map((gen, i) => (
                         <span key={i} className="text-sm sm:text-[16px]">
                           {gen}
                         </span>
                       ))}
                     </div>
                     <p className="text-sm sm:text-lg text-center sm:text-start">
-                      {slid.movieDesc}
+                      {slid.overview}
                     </p>
                     <div className="flex gap-3 mt-3 justify-center sm:justify-start">
                       <button
@@ -86,7 +90,7 @@ const HomeSlider = () => {
                         Watch Trailer
                       </button>
                       <Link
-                        href={`/pages/movies/1`}
+                        href={`/pages/movies/${slid.tmdbId}`}
                         aria-label="More Info"
                         className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary h-[40px]  sm:h-auto"
                       >

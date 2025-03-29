@@ -2,7 +2,7 @@
 // Loading animation
 export const HomeSliderSkeleton = () => {
   return (
-    <div className="relative w-full h-[400px] bg-gray-800 animate-pulse rounded-lg overflow-hidden">
+    <div className="mx-[1rem] sm:mx-[2rem] relative w-full h-[500px] bg-gray-800 animate-pulse rounded-lg overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40"></div>
       <div className="absolute bottom-8 left-8">
         <div className="h-8 w-2/3 bg-gray-700 rounded mb-2 animate-pulse"></div>
@@ -37,7 +37,7 @@ export const MovieGridSkeleton = () => {
       </div>
 
       {/* Movie grid */}
-      <div className="grid grid-cols-5 gap-6">
+      <div className="grid grid-cols- gap-6">
         {Array.from({ length: 10 }).map((_, index) => (
           <div
             key={index}
@@ -48,3 +48,17 @@ export const MovieGridSkeleton = () => {
     </div>
   );
 };
+
+export const CardSkeleton = () => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg"></div>
+      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden sm:block"></div>
+      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden md:block"></div>
+      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden md:block"></div>
+    </div>
+  );
+};
+
+
+

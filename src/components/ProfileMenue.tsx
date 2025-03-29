@@ -49,7 +49,7 @@ export default function ProfileMenu() {
               className="w-full h-full rounded-full object-contain"
             />
           ) : (
-            <span className="text-white text-lg font-semibold">{name?.charAt(0).toUpperCase()}</span>
+            <span className="text-white text-lg font-semibold">{name?.charAt(0).toUpperCase() || "U"}</span>
           )}
         </div>
       </button>

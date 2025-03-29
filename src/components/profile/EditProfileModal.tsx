@@ -89,7 +89,7 @@ export default function EditProfileModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Button */}
-        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-4 rounded mt-6">
+        <button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-4 rounded mt-6" onClick={onClose}>
           Update
         </button>
       </div>
