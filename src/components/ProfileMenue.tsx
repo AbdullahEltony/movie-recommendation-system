@@ -8,10 +8,15 @@ import { LuUserRound } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
 
 export default function ProfileMenu() {
-  const { name, profileImage } = JSON.parse(
-    localStorage.getItem("user") || "{}"
-  );
-  // const isValidProfileImage = profileImage.startsWith("http");
+  const [profileImage, setProfileImage] = useState<string | null>(null);
+  const [name, setName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const { name, profileImage } = JSON.parse(localStorage.getItem("user") || "{}");
+    setName(name);
+    setProfileImage(profileImage);
+  }, [])
+  
 
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +56,7 @@ export default function ProfileMenu() {
             />
           ) : (
             <span className="text-white text-lg font-semibold">
-              {name?.charAt(0).toUpperCase()}
+              {name?.charAt(0).toUpperCase() || "U"}
             </span>
           )}
         </div>

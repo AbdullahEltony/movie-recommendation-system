@@ -8,20 +8,25 @@ import { setUser } from "@/redux/slices/userSlice";
 
 export default function EditProfileModal({ onClose }: { onClose: () => void }) {
   const [name, setName] = useState(JSON.parse(localStorage.getItem("user") || "{}").name);
-  const [image, setImage] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const [newEmail, setNewEmail] = useState("");
   const dispatch = useDispatch();
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setImage(event.target.files[0]);
+      setFile(event.target.files[0]);
     }
   };    
 
   const handleUpdate = () => {
-    const profileImage = image ? URL.createObjectURL(image) : null;
-    dispatch(setUser({ name: name, profileImage}));
-    onClose();
+    if (!file) return; 
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      dispatch(setUser({ name, profileImage: reader.result }));
+      onClose();
+    };
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -61,11 +66,7 @@ export default function EditProfileModal({ onClose }: { onClose: () => void }) {
 
               <div className="flex items-center justify-center">
                 <Image
-                  src={
-                    image
-                      ? URL.createObjectURL(image)
-                      : "/image-placeholder.png"
-                  }
+                  src={file ? URL.createObjectURL(file) : "/image-placeholder.png"}
                   alt="Preview"
                   width={100}
                   height={100}
@@ -87,7 +88,7 @@ export default function EditProfileModal({ onClose }: { onClose: () => void }) {
               <label className="block text-gray-300">Email</label>
               <input
                 type="text"
-                value={newEmail}
+                value={newEmail}// التأكد من اختيار ملف قبل الرفع
                 onChange={(e) => setNewEmail(e.target.value)}
                 className="w-full p-4 rounded bg-background text-white outline-none focus:ring-2 focus:ring-red-600"
                 placeholder="johndoe@example"
