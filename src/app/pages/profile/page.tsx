@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import MovieCard from "@/components/MovieCard";
 import SectionTitle from "@/components/SectionTitle";
 import { CardSkeleton } from "@/components/skeletons";
@@ -22,7 +22,7 @@ const RecentActivity = () => {
           {data?.length === 0 && <p>No Liks yet</p>}
           {data?.map((movie) => (
             <MovieCard
-              key={movie.id}
+              key={movie.movieId}
               tmdbid={movie.tmdbId}
               title={movie.title}
               image={`https://image.tmdb.org/t/p/original//${movie.poster_path}`}

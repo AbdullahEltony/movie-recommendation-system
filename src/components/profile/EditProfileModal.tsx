@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/slices/userSlice";
 
 export default function EditProfileModal({ onClose }: { onClose: () => void }) {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(JSON.parse(localStorage.getItem("user") || "{}").name);
   const [image, setImage] = useState<File | null>(null);
   const [newEmail, setNewEmail] = useState("");
   const dispatch = useDispatch();

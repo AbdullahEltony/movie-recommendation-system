@@ -2,11 +2,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import EditProfileModal from "./EditProfileModal";
-import { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
 const ProfileHeader = () => {
-  const { name,profileImage } = useSelector((state: RootState) => state.user);
+  const { name, profileImage } = JSON.parse(
+    localStorage.getItem("user") || "{}"
+  );
   const [isOpen, setIsOpen] = useState(false);
+  
   return (
     <>
       <header className="flex flex-col sm:flex-row justify-between items-center gap-8">
@@ -33,7 +34,7 @@ const ProfileHeader = () => {
           </div>
           <div className="flex items-center">
             <span className="block w-[6px] h-6 rounded-xl bg-primary mr-2"></span>
-            <h2 className="text-lg sm:text-3xl">{name? name : "User Name"}</h2>
+            <h2 className="text-lg sm:text-3xl">{name ? name : "User Name"}</h2>
             <button
               onClick={() => setIsOpen(true)}
               className="bg-primary rounded-3xl px-4 py-2 text-xs sm:text-sm ml-3 mt-1"
