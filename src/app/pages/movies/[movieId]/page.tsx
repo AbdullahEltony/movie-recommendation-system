@@ -14,7 +14,7 @@ import { Movie } from "@/lib/types";
 const MovieDetails = () => {
   const pathname = usePathname();
   const tmdbid = pathname.split("/")[3];
-  const { data } = useFetch<Movie>(`/api/Movie/` + tmdbid);
+  const { data,loading } = useFetch<Movie>(`/api/Movie/` + tmdbid);
   const info = {
     id: data?.tmdbId,
     title: data?.title,
@@ -28,12 +28,12 @@ const MovieDetails = () => {
   return (
     <div>
       {/* Movie Info */}
-
-      <MovieInfo info={info}/>
+      
+      <MovieInfo info={info} loading={loading}/>
       {/* Trailer */}
-      <Trailer trailer={data?.trailer_path} image={data?.poster_path} />
+      <Trailer trailer={data?.trailer_path} image={data?.poster_path} loading={loading} />
       {/*Actors*/}
-      <Actors />
+      <Actors actors={data?.actors} loading={loading}/>
       {/*Reviews*/}
       <Reviews />
       {/*Similar Movies*/}

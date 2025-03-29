@@ -4,10 +4,20 @@ import Image from "next/image";
 import SectionTitle from "../SectionTitle";
 import { IoPlay } from "react-icons/io5";
 import { IMAGEPOSTER } from "@/constants";
+import { SkeletonTrailer } from "../skeletons";
 
-export default function Trailer({ trailer, image }:{trailer:string | undefined, image:string | undefined}) {
+export default function Trailer({
+  trailer,
+  image,
+  loading,
+}: {
+  trailer: string | undefined;
+  image: string | undefined;
+  loading: boolean;
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
+  if (loading) return <SkeletonTrailer />;
   return (
     <div className="bg-black rounded-lg section">
       <SectionTitle title="Trailer" />

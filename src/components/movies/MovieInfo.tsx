@@ -9,6 +9,7 @@ import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { IMAGEPOSTER } from "@/constants";
 import { formatDuration } from "@/lib/utils";
+import { SkeletonMovieInfo } from "@/components/skeletons";
 type Props = {
   id: number | undefined;
   title: string | undefined;
@@ -18,7 +19,7 @@ type Props = {
   poster_path: string | undefined;
   geners: string[] | undefined;
 };
-const MovieInfo = ({ info }: { info: Props }) => {
+const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
   const [liked, setLiked] = useState(false);
   const toggleLike = () => {
     setLiked(!liked);
@@ -29,7 +30,7 @@ const MovieInfo = ({ info }: { info: Props }) => {
       position: "bottom-right",
     });
   };
-  // if (loading) return <MovieSkeleton />;
+  if (loading) return <SkeletonMovieInfo />;
   return (
     <div
       className={`relative w-full h-screen bg-cover bg-top`}
@@ -62,15 +63,14 @@ const MovieInfo = ({ info }: { info: Props }) => {
               <span>{formatDuration(info.time)}</span>
             </div>
             <ul className="flex gap-2 items-center flex-wrap">
-              <li className="bg-[#AE251C] text-white px-3 py-1 italic rounded-md">
-                Drama
-              </li>
-              <li className="bg-[#AE251C] text-white px-3 py-1 italic rounded-md">
-                Action
-              </li>
-              <li className="bg-[#AE251C] text-white px-3 py-1 italic rounded-md">
-                Comidy
-              </li>
+              {info.geners?.map((gen) => (
+                <li
+                  key={gen}
+                  className="bg-[#AE251C] text-white px-3 py-1 italic rounded-md"
+                >
+                  {gen}
+                </li>
+              ))}
             </ul>
             <p className="w-full md:max-w-[60%]">{info.overview}</p>
             <div className="flex items-center gap-3">
