@@ -17,7 +17,11 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.name = action.payload.name;
       state.profileImage = action.payload.profileImage;
-      
+      if (typeof window !== "undefined") {
+        if (!localStorage.getItem("user")) {
+          localStorage.setItem("user", JSON.stringify(action.payload));
+        }
+      }
     },
     clearUser: (state) => {
       state.name = null;
