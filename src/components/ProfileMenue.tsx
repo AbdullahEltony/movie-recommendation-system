@@ -6,18 +6,11 @@ import { useRouter } from "next/navigation";
 import { CiLogout } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export default function ProfileMenu() {
-  const [profileImage, setProfileImage] = useState<string | null>(null);
-  const [name, setName] = useState<string | null>(null);
-
-  useEffect(() => {
-    const { name, profileImage } = JSON.parse(localStorage.getItem("user") || "{}");
-    setName(name);
-    setProfileImage(profileImage);
-  }, [])
-  
-
+  const {user} = useSelector((state:RootState)=> state);
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -46,9 +39,9 @@ export default function ProfileMenu() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="w-8 h-8 rounded-full border-2 border-primary">
-          {profileImage ? (
+          {user.profileImage ? (
             <Image
-              src={profileImage }
+              src={user.profileImage }
               alt="user"
               width={32}
               height={32}
@@ -56,7 +49,7 @@ export default function ProfileMenu() {
             />
           ) : (
             <span className="text-white text-lg font-semibold">
-              {name?.charAt(0).toUpperCase() || "U"}
+              {user.name?.charAt(0).toUpperCase() || "U"}
             </span>
           )}
         </div>
