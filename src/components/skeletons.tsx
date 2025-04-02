@@ -24,17 +24,7 @@ export const HomeSliderSkeleton = () => {
 
 export const MovieGridSkeleton = () => {
   return (
-    <div className="p-4 mt-[5rem]">
-      {/* Filter options */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mb-6 gap-2">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <div
-            key={index}
-            className="h-10 bg-gray-700 rounded animate-pulse m-0"
-          ></div>
-        ))}
-      </div>
-
+    <div className="p-4">
       {/* Movie grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {Array.from({ length: 10 }).map((_, index) => (

@@ -1,4 +1,5 @@
 import MovieCard from "../MovieCard";
+import { MovieGridSkeleton } from "../skeletons";
 interface Movie {
   id?: number;
   movieId: number;
@@ -7,8 +8,8 @@ interface Movie {
   poster_path: string;
 }
 
-const MoviesGrid = ({ movieList }: { movieList: Movie[] | null}) => {
-  
+const MoviesGrid = ({ movieList,loading }: { movieList: Movie[] | null,loading:boolean}) => {
+  if(loading) return <MovieGridSkeleton />
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-7 mt-5 p-4">
       {movieList?.map((movie) => (
