@@ -2,8 +2,9 @@
 
 interface ModalProps {
   setIsOpen: (state: boolean) => void;
+  trailer: string
 }
-const TrailerModal = ({ setIsOpen }: ModalProps) => {
+const TrailerModal = ({ setIsOpen, trailer }: ModalProps) => {
   return (
     <>
       {/* Modal */}
@@ -23,7 +24,7 @@ const TrailerModal = ({ setIsOpen }: ModalProps) => {
           <div className="relative aspect-video">
             <iframe
               className="w-full h-full rounded-lg"
-              src='https://www.youtube.com/embed/iV46TJKL8cU?si=Jcm0QOB1ZJxU8RVS'
+              src={`https://www.youtube.com/embed/${trailer}?si=Jcm0QOB1ZJxU8RVS`}
               title='trailer'
               allowFullScreen
             ></iframe>

@@ -22,15 +22,18 @@ import { HomeSliderSkeleton } from "../skeletons";
 
 const HomeSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [trailer,setTrailer] = useState("") 
   const addToWatchlist = () => {
     toast.success("Added to watchlist successfully!", {
       position: "bottom-right",
     });
   };
 
-  const { data: movies,loading } = useFetch<Movie[]>("/api/Movie/random-movie");
-   
+  const { data: movies, loading } = useFetch<Movie[]>(
+    "/api/Movie/random-movie"
+  );
+
+  
   return (
     <>
       <Swiper
@@ -80,7 +83,7 @@ const HomeSlider = () => {
                     </p>
                     <div className="flex gap-3 mt-3 justify-center sm:justify-start">
                       <button
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => {setTrailer(slid.trailer_path); setIsOpen(true)}}
                         aria-label="Watch Trailer"
                         className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto"
                       >
@@ -120,8 +123,8 @@ const HomeSlider = () => {
             </SwiperSlide>
           );
         })}
+        {isOpen && <TrailerModal setIsOpen={setIsOpen} trailer={trailer}/>}
       </Swiper>
-      {isOpen && <TrailerModal setIsOpen={setIsOpen} />}
     </>
   );
 };
