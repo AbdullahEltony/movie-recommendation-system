@@ -50,7 +50,7 @@ export default function SingleActor() {
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-[2rem] overflow-y-auto custom-scrollbar">
             {actorData?.movies.map((movie) => (
               <MovieCard
-                key={movie.id}
+                key={movie.movieId}
                 tmdbid={movie.tmdbId}
                 title={movie.title}
                 image={IMAGEPOSTER + movie.poster_path}
@@ -101,7 +101,7 @@ export default function SingleActor() {
           {actorData?.movies.map((movie) => (
             <div key={movie.title} className="">
               <MovieCard
-                key={movie.id}
+                key={movie.movieId}
                 tmdbid={movie.tmdbId}
                 title={movie.title}
                 image={`https://image.tmdb.org/t/p/original//${movie.poster_path}`}

@@ -62,7 +62,7 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
               </span>
               <span>{formatDuration(info.time)}</span>
             </div>
-            <ul className="flex gap-2 items-center flex-wrap">
+            {/* <ul className="flex gap-2 items-center flex-wrap">
               {info.geners?.map((gen) => (
                 <li
                   key={gen}
@@ -71,7 +71,7 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
                   {gen}
                 </li>
               ))}
-            </ul>
+            </ul> */}
             <p className="w-full md:max-w-[60%]">{info.overview}</p>
             <div className="flex items-center gap-3">
               <button
