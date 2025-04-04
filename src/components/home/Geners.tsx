@@ -38,7 +38,7 @@ const Geners = () => {
       <div className="flex justify-between items-center pr-1 sm:pr-4">
         <SectionTitle title="Descover By Geners" />
         <select
-          className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md mb-4"
+          className="border border-gray-500 bg-black text-white px-4 py-1 rounded-md mb-4 w-[100px] sm:w-[200px]"
           onChange={(e) => setSelected(e.target.value)}
         >
           <option value="">Genres</option>
@@ -51,7 +51,7 @@ const Geners = () => {
       </div>
       <SliderWrapper>
         <MovieSlider
-          sliderType="recommended"
+          sliderType="geners"
           movieList={filteredData}
           loading={loading}
         />

@@ -10,7 +10,6 @@ const renderLinks = (links: NavLink[], pathname: string) => {
   return links.map((link) => {
     const Icon = icons[link.icon];
     const isActive = pathname === link.href;
-
     return (
       <li key={link.name} className="relative text-lg">
         <Link
