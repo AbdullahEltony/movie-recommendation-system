@@ -19,21 +19,55 @@ import { toast } from "react-toastify";
 import useFetch from "@/hooks/useFetch";
 import { Movie } from "@/lib/types";
 import { HomeSliderSkeleton } from "../skeletons";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovieToWatchlist } from "@/redux/slices/watchlist";
+import { RootState } from "@/redux/store";
+// import { addToRecentActivities } from "@/redux/slices/recentActivity";
+import { IMAGEPOSTER } from "@/constants";
+import { addToRecentActivities } from "@/redux/slices/recentActivity";
 
 const HomeSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [trailer,setTrailer] = useState("") 
-  const addToWatchlist = () => {
-    toast.success("Added to watchlist successfully!", {
-      position: "bottom-right",
-    });
-  };
-
+  const [trailer, setTrailer] = useState("");
+  const { watchlist } = useSelector((state: RootState) => state.watchlist);
+  const dispatch = useDispatch();
   const { data: movies, loading } = useFetch<Movie[]>(
     "/api/Movie/random-movie"
   );
 
-  
+  const addToWatchlist = (movie: {
+    tmdbId: number;
+    title: string;
+    poster_path: string;
+  }) => {
+    const isExistMovie = watchlist?.find(
+      (m) => m.tmdbId === movie.tmdbId
+    );
+    if (!isExistMovie) {
+      toast.success("Added to watchlist successfully!", {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+      });
+      dispatch(addMovieToWatchlist(movie));
+
+    } else {
+      toast.warning("Already in your watchlist", {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+      });
+    }
+    const date = new Date()
+    dispatch(addToRecentActivities({
+      tmdbId:movie.tmdbId,
+      movieTitle:movie.title,
+      poster_path:movie.poster_path,
+      type:'watchlist',
+      createdAt:date
+    }))
+  };
+
   return (
     <>
       <Swiper
@@ -52,7 +86,7 @@ const HomeSlider = () => {
             <SwiperSlide key={slid.movieId}>
               <div className="w-full relative">
                 <Image
-                  src={`https://image.tmdb.org/t/p/original//${slid.poster_path}`}
+                  src={IMAGEPOSTER+slid.poster_path}
                   width={700}
                   height={700}
                   alt="Movie Poster"
@@ -71,19 +105,18 @@ const HomeSlider = () => {
                       </div>
                       <span>{slid.release_date}</span>
                     </div>
-                    {/* <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
-                      {slid.genresDetails?.map((gen) => (
-                        <span key={gen} className="text-sm sm:text-[16px]">
-                          {gen}
-                        </span>
-                      ))}
-                    </div> */}
+
+                    {/* genres */}
+
                     <p className="text-sm sm:text-lg text-center sm:text-start">
                       {slid.overview}
                     </p>
                     <div className="flex gap-3 mt-3 justify-center sm:justify-start">
                       <button
-                        onClick={() => {setTrailer(slid.trailer_path); setIsOpen(true)}}
+                        onClick={() => {
+                          setTrailer(slid.trailer_path);
+                          setIsOpen(true);
+                        }}
                         aria-label="Watch Trailer"
                         className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto"
                       >
@@ -107,7 +140,13 @@ const HomeSlider = () => {
                         More Info
                       </Link>
                       <button
-                        onClick={addToWatchlist}
+                        onClick={() =>
+                          addToWatchlist({
+                            tmdbId: slid.tmdbId,
+                            title: slid.title,
+                            poster_path: slid.poster_path,
+                          })
+                        }
                         aria-label="Add to Watchlist"
                         className="border border-primary  text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto"
                       >
@@ -123,7 +162,7 @@ const HomeSlider = () => {
             </SwiperSlide>
           );
         })}
-        {isOpen && <TrailerModal setIsOpen={setIsOpen} trailer={trailer}/>}
+        {isOpen && <TrailerModal setIsOpen={setIsOpen} trailer={trailer} />}
       </Swiper>
     </>
   );

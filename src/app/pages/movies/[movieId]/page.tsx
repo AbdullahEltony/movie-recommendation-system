@@ -16,6 +16,8 @@ const MovieDetails = () => {
   const tmdbid = pathname.split("/")[3];
   const { data,loading } = useFetch<Movie>(`/api/Movie/` + tmdbid);
   const info = {
+    movieId: data?.movieId,
+    tmdbId: data?.tmdbId,
     id: data?.tmdbId,
     title: data?.title,
     poster_path: data?.poster_path,
@@ -35,7 +37,7 @@ const MovieDetails = () => {
       {/*Actors*/}
       <Actors actors={data?.actors} loading={loading}/>
       {/*Reviews*/}
-      <Reviews />
+      <Reviews tmdbId={data?.tmdbId} title={data?.title} poster_path={data?.poster_path}/>
       {/*Similar Movies*/}
       <SimilarMovies />
       <ToastContainer />

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LuCalendarClock } from "react-icons/lu";
 import { GoStarFill } from "react-icons/go";
 import { FiHeart } from "react-icons/fi";
@@ -10,7 +10,15 @@ import { toast } from "react-toastify";
 import { IMAGEPOSTER } from "@/constants";
 import { formatDuration } from "@/lib/utils";
 import { SkeletonMovieInfo } from "@/components/skeletons";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovieToWatchlist } from "@/redux/slices/watchlist";
+import { RootState } from "@/redux/store";
+import { addToLikedMovies, removeMovieFromLiked } from "@/redux/slices/liked";
+import { addToRecentActivities } from "@/redux/slices/recentActivity";
+
 type Props = {
+  movieId: number | undefined;
+  tmdbId: number | undefined;
   id: number | undefined;
   title: string | undefined;
   overview: string | undefined;
@@ -19,17 +27,72 @@ type Props = {
   poster_path: string | undefined;
   geners: string[] | undefined;
 };
+
 const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState<boolean | null>(null);
+  const { watchlist } = useSelector((state: RootState) => state.watchlist);
+
+  const dispatch = useDispatch();
   const toggleLike = () => {
-    setLiked(!liked);
+    setLiked((prev) => !prev);
   };
 
+  useEffect(() => {
+    if (liked !== null) {
+      if (liked) {
+        dispatch(
+          addToLikedMovies({
+            tmdbId: info.tmdbId,
+            title: info.title,
+            poster_path: info.poster_path,
+          })
+        );
+        dispatch(addToRecentActivities({
+          tmdbId:info.tmdbId,
+          movieTitle:info.title,
+          poster_path:info.poster_path,
+          type:'liked',
+          createdAt:new Date()
+        }))
+      } else {
+        dispatch(removeMovieFromLiked(info.tmdbId));
+      }
+    }
+  }, [liked]);
+
   const addToWatchlist = () => {
-    toast.success("Added to watchlist successfully!", {
-      position: "bottom-right",
-    });
+    const isExistMovie = watchlist?.find(
+      (movie) => movie.tmdbId === info.tmdbId
+    );
+    if (!isExistMovie) {
+      toast.success("Added to watchlist successfully!", {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+      });
+      dispatch(
+        addMovieToWatchlist({
+          tmdbId: info.tmdbId,
+          title: info.title,
+          poster_path: info.poster_path,
+        })
+      );
+    } else {
+      toast.warning("Already in your watchlist", {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+      });
+    }
+      dispatch(addToRecentActivities({
+        tmdbId:info.tmdbId,
+        movieTitle:info.title,
+        poster_path:info.poster_path,
+        type:'watchlist',
+        createdAt: new Date().toISOString()
+      }))
   };
+
   if (loading) return <SkeletonMovieInfo />;
   return (
     <div

@@ -8,7 +8,7 @@ interface Movie {
   movieId: number;
   tmdbId: number;
   title: string;
-  poster_path: string;
+  poster_path: number;
 }
 const UserWatchList = () => {
   const { data, loading } = useFetch<Movie[]>("/api/Movie/top-ten");
@@ -19,7 +19,7 @@ const UserWatchList = () => {
       <CardSkeleton />
     ) : (
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 rounded-lg">
-        {data?.length === 0 && <p>No Liks yet</p>}
+        {data?.length === 0 && <p>There is no Recommend Movies Yet</p>}
         {data?.map((movie) => (
           <MovieCard
             key={movie.id}

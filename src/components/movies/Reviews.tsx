@@ -3,12 +3,22 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import SectionTitle from "../SectionTitle";
-import { truncateText } from "@/lib/utils";
+import { FormatDate, truncateText } from "@/lib/utils";
+import { useDispatch } from "react-redux";
+import { addToReviews } from "@/redux/slices/reviews";
+import { toast } from "react-toastify";
 
-export default function Reviews() {
+interface MovieProps {
+  tmdbId: number | undefined;
+  title: string | undefined;
+  poster_path: string | undefined;
+}
+
+export default function Reviews({ tmdbId, title, poster_path }: MovieProps) {
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const dispatch = useDispatch();
 
   const reviews = [
     {
@@ -59,6 +69,35 @@ export default function Reviews() {
   ];
   const handleRating = (i: number) => {
     setRating(i);
+  };
+
+  const HandleSubmitReview = () => {
+    if (message.length < 10) {
+      toast.error("Please enter a message with at least 10 characters", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+      });
+    } else {
+      const date = new Date()
+      dispatch(
+        addToReviews({
+          tmdbId,
+          title,
+          poster_path,
+          message,
+          rating,
+          createdAt: FormatDate(date),
+        })
+      );
+      toast.success("Review added successfully!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+      });
+      setRating(0);
+      setMessage("");
+    }
   };
 
   return (
@@ -116,7 +155,10 @@ export default function Reviews() {
             />
           </div>
 
-          <button className="w-full bg-red-600 text-white font-bold py-2 rounded-lg mt-4">
+          <button
+            onClick={HandleSubmitReview}
+            className="w-full bg-red-600 text-white font-bold py-2 rounded-lg mt-4"
+          >
             Submit
           </button>
         </div>
@@ -155,7 +197,10 @@ export default function Reviews() {
                     {truncateText(review.message, isExpanded, 80)}
                     <br />
                     {review.message.length > 80 && (
-                      <button className="text-white text-sm" onClick={() => setIsExpanded(!isExpanded)}>
+                      <button
+                        className="text-white text-sm"
+                        onClick={() => setIsExpanded(!isExpanded)}
+                      >
                         {isExpanded ? "Read Less" : "Read More"}
                       </button>
                     )}

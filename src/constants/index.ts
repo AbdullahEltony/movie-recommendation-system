@@ -114,6 +114,6 @@ export const AUTH_URL = "http://cinemate.runasp.net/api/Auth/";
 
 
 export const TRAILER_URL = "";
-export const IMAGEPOSTER = "https://image.tmdb.org/t/p/original//";
+export const IMAGEPOSTER = "https://image.tmdb.org/t/p/original/";
 
 export { icons }; // Export icons for use

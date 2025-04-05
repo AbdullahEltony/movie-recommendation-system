@@ -11,7 +11,7 @@ const page = () => {
         <div className="container mx-auto !px-2 xl:!px-[6rem] !py-2 md:px-24 !md:py-4">
           {/* Navebar */}
           <div className="flex items-center justify-between gap-4">
-            <Link href="/">
+            <Link href="/pages">
               <Image src="/logo.svg" width={100} height={100} alt="logo" />
             </Link>
             <div className="bg-[#2d3638] rounded-3xl flex items-center ml-0 lg:ml-[2rem] p-3 bg-opacity-80 w-full lg:w-3/6">
