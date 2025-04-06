@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import SectionTitle from "../SectionTitle";
 import { IMAGEPOSTER } from "@/constants";
 import { FaStar } from "react-icons/fa6";
@@ -18,12 +18,14 @@ const ReviewCard = (item: cardProps) => {
       <div className="max-w-xl sm:max-w-3xl md:max-w-4xl  flex gap-4">
         {/* Movie Poster */}
         <div className="w-[100px] h-[160px] sm:w-[190px] sm:h-[250px] overflow-hidden">
-          <Image
+          <img
             src={IMAGEPOSTER + item.poster_path}
             alt="Batman Begins"
             width={190}
             height={250}
             className="object-cover rounded-lg w-full h-full"
+            loading="lazy"
+
           />
         </div>
 

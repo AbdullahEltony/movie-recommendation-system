@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import SectionTitle from "@/components/SectionTitle";
 import { IMAGEPOSTER } from "@/constants";
 import { formatTimestamp, truncateText } from "@/lib/utils";
 import { RootState } from "@/redux/store";
-import Image from "next/image";
 import { useState } from "react";
 import {
   FaHeart,
@@ -47,12 +47,13 @@ export default function RecentActivitySection() {
             key={activity.tmdbId}
             className="flex bg-zinc-900 rounded-xl overflow-hidden border border-zinc-700 shadow-md"
           >
-            <Image
+            <img
               src={IMAGEPOSTER + activity.poster_path}
               alt={activity.movieTitle}
               width={250}
               height={190}
               className="w-40 md:w-56 lg:w-60 h-40 md:h-60 object-cover"
+              loading="lazy"
             />
 
             <div className="p-4 flex-1 flex flex-col gap-3">
