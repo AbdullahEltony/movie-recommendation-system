@@ -32,7 +32,7 @@ const ProfileHeader = () => {
               />
             )}
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center mx-auto sm:mx-0">
             <span className="block w-[6px] h-6 rounded-xl bg-primary mr-2"></span>
             <h2 className="text-lg sm:text-3xl">{name ? name : "User Name"}</h2>
             <button

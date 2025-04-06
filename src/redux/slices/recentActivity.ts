@@ -4,11 +4,12 @@ interface Activities {
   recentActivities:
     | {
         tmdbId: number;
+        title:string
         movieTitle: string;
         poster_path: string;
         rating?: number;
-        createdAt: string;
         reviewMessage?: string;
+        createdAt: string;
         type: string;
       }[]
     | null;
@@ -24,11 +25,9 @@ const ActivitiesSlice = createSlice({
   reducers: {
     addToRecentActivities: (state, action) => {
       const isExistMovie = state.recentActivities?.find(
-        (m) => m.tmdbId === action.payload.tmdbId && m.type === action.payload.type
-      )
-      if (!isExistMovie) {
-        state.recentActivities?.push(action.payload);
-      }
+        (m) => m.tmdbId === action.payload.tmdbId && action.payload.type === m.type
+      );
+      if(!isExistMovie) state.recentActivities?.push(action.payload);
     },
   },
 });

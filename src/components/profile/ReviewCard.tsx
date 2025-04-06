@@ -1,8 +1,7 @@
-
 import Image from "next/image";
 import SectionTitle from "../SectionTitle";
-import { IoStar } from "react-icons/io5";
 import { IMAGEPOSTER } from "@/constants";
+import { FaStar } from "react-icons/fa6";
 
 interface cardProps {
   tmdbId: number;
@@ -20,7 +19,7 @@ const ReviewCard = (item: cardProps) => {
         {/* Movie Poster */}
         <div className="w-[100px] h-[160px] sm:w-[190px] sm:h-[250px] overflow-hidden">
           <Image
-            src={IMAGEPOSTER+item.poster_path}
+            src={IMAGEPOSTER + item.poster_path}
             alt="Batman Begins"
             width={190}
             height={250}
@@ -35,10 +34,20 @@ const ReviewCard = (item: cardProps) => {
 
           {/* Review */}
           <div className="bg-background p-3 rounded-lg mt-3">
-            <div className="flex gap-2">{Array.from({ length: item.rating || 0 }).map((_, index) => <span key={index} className="text-primary"><IoStar/></span>)}</div>
+            <div className="flex items-center space-x-1 mb-1">
+              {[...Array(5)].map((_, i) => (
+                <FaStar
+                  key={i}
+                  size={14}
+                  className={
+                    i < item.rating! ? "text-red-500" : "text-zinc-600"
+                  }
+                />
+              ))}
+            </div>
             <p className="text-white mt-2 text-sm sm:text-lg">{item.message}</p>
             <span className="text-white text-sm mt-3 flex items-center gap-1">
-              <span className="w-1 h-4 rounded-xl bg-primary block"></span> 
+              <span className="w-1 h-4 rounded-xl bg-primary block"></span>
               <span>{item.createdAt}</span>
             </span>
           </div>

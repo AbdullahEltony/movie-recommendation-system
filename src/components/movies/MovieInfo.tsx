@@ -49,10 +49,11 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
         );
         dispatch(addToRecentActivities({
           tmdbId:info.tmdbId,
+          title:"added to liked",
           movieTitle:info.title,
           poster_path:info.poster_path,
           type:'liked',
-          createdAt:new Date()
+          createdAt:new Date().toISOString()
         }))
       } else {
         dispatch(removeMovieFromLiked(info.tmdbId));
@@ -86,6 +87,7 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
     }
       dispatch(addToRecentActivities({
         tmdbId:info.tmdbId,
+        title:"added To watchlist",
         movieTitle:info.title,
         poster_path:info.poster_path,
         type:'watchlist',
@@ -108,7 +110,7 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
             alt={info.title || "image-poster"}
             width={300}
             height={350}
-            className="rounded-lg hidden lg:block w-auto h-auto"
+            className="rounded-lg hidden lg:block w-[300px] h-[350px] object-cover"
           />
           <div className="flex flex-col items-center text-center gap-5 max-w-full">
             <h2 className="tracking-widest text-4xl xl:text-5xl font-bold">

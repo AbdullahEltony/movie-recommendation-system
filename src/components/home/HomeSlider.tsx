@@ -61,6 +61,7 @@ const HomeSlider = () => {
     const date = new Date()
     dispatch(addToRecentActivities({
       tmdbId:movie.tmdbId,
+      title:'added To watchlist',
       movieTitle:movie.title,
       poster_path:movie.poster_path,
       type:'watchlist',
