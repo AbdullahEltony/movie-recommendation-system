@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
 import Image from "next/image";
@@ -31,12 +32,13 @@ export default function Trailer({
           />
         ) : (
           <>
-            <Image
+            <img
               src={IMAGEPOSTER + image}
               alt="Trailer Thumbnail"
-              width={1000}
-              height={500}
+              width="1000"
+              height="500"
               className="object-cover w-full h-full"
+              loading="lazy" 
             />
             <button
               onClick={() => setIsPlaying(true)}
