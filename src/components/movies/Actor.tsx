@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Image from "next/image";
 import MovieCard from "../MovieCard";
@@ -61,16 +62,13 @@ export default function SingleActor() {
 
             {/* Right section (Actor Profile) */}
             <aside className="w-80 p-4 flex flex-col items-center space-y-4 sticky top-0">
-              <Image
-                src={
-                  actorData?.profilePath
-                    ? IMAGEPOSTER + actorData?.profilePath
-                    : "/ueser-placeholder.jpg"
-                }
+              <img
+                src={IMAGEPOSTER + actorData?.profilePath}
                 alt="Chris Pratt"
                 width={400}
                 height={500}
-                className="w-80 h-68 rounded-lg object-cover"
+                className={`w-80 h-68 rounded-lg object-cover transition-opacity duration-500`}
+                loading="lazy" 
               />
               <h3>{actorData?.name}</h3>
               <p className="text-sm text-gray-300">

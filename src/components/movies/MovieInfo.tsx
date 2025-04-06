@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { LuCalendarClock } from "react-icons/lu";
 import { GoStarFill } from "react-icons/go";
@@ -47,14 +48,16 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
             poster_path: info.poster_path,
           })
         );
-        dispatch(addToRecentActivities({
-          tmdbId:info.tmdbId,
-          title:"added to liked",
-          movieTitle:info.title,
-          poster_path:info.poster_path,
-          type:'liked',
-          createdAt:new Date().toISOString()
-        }))
+        dispatch(
+          addToRecentActivities({
+            tmdbId: info.tmdbId,
+            title: "added to liked",
+            movieTitle: info.title,
+            poster_path: info.poster_path,
+            type: "liked",
+            createdAt: new Date().toISOString(),
+          })
+        );
       } else {
         dispatch(removeMovieFromLiked(info.tmdbId));
       }
@@ -85,14 +88,16 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
         theme: "dark",
       });
     }
-      dispatch(addToRecentActivities({
-        tmdbId:info.tmdbId,
-        title:"added To watchlist",
-        movieTitle:info.title,
-        poster_path:info.poster_path,
-        type:'watchlist',
-        createdAt: new Date().toISOString()
-      }))
+    dispatch(
+      addToRecentActivities({
+        tmdbId: info.tmdbId,
+        title: "added To watchlist",
+        movieTitle: info.title,
+        poster_path: info.poster_path,
+        type: "watchlist",
+        createdAt: new Date().toISOString(),
+      })
+    );
   };
 
   if (loading) return <SkeletonMovieInfo />;
@@ -105,11 +110,9 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
     >
       <div className="absolute w-full inset-0 bg-gradient-to-t from-black/80 via-black/80 via-10% to-black/40">
         <div className="absolute w-full flex justify-around items-center top-[50%] translate-y-[-50%] mx-0 xl:mx-[4rem] p-5">
-          <Image
+          <img
             src={IMAGEPOSTER + info.poster_path}
             alt={info.title || "image-poster"}
-            width={300}
-            height={350}
             className="rounded-lg hidden lg:block w-[300px] h-[350px] object-cover"
           />
           <div className="flex flex-col items-center text-center gap-5 max-w-full">

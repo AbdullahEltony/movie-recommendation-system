@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
         hostname: "image.tmdb.org",
       },
     ],
+    domains: ['res.cloudinary.com']
   },
   async rewrites() {
     return [

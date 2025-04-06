@@ -11,7 +11,6 @@ import { BsExclamationCircle } from "react-icons/bs";
 import { FaRegBookmark } from "react-icons/fa6";
 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import TrailerModal from "../modals/TrailerModal";
@@ -22,7 +21,6 @@ import { HomeSliderSkeleton } from "../skeletons";
 import { useDispatch, useSelector } from "react-redux";
 import { addMovieToWatchlist } from "@/redux/slices/watchlist";
 import { RootState } from "@/redux/store";
-// import { addToRecentActivities } from "@/redux/slices/recentActivity";
 import { IMAGEPOSTER } from "@/constants";
 import { addToRecentActivities } from "@/redux/slices/recentActivity";
 
@@ -40,9 +38,7 @@ const HomeSlider = () => {
     title: string;
     poster_path: string;
   }) => {
-    const isExistMovie = watchlist?.find(
-      (m) => m.tmdbId === movie.tmdbId
-    );
+    const isExistMovie = watchlist?.find((m) => m.tmdbId === movie.tmdbId);
     if (!isExistMovie) {
       toast.success("Added to watchlist successfully!", {
         position: "bottom-right",
@@ -50,7 +46,6 @@ const HomeSlider = () => {
         theme: "dark",
       });
       dispatch(addMovieToWatchlist(movie));
-
     } else {
       toast.warning("Already in your watchlist", {
         position: "bottom-right",
@@ -58,15 +53,17 @@ const HomeSlider = () => {
         theme: "dark",
       });
     }
-    const date = new Date()
-    dispatch(addToRecentActivities({
-      tmdbId:movie.tmdbId,
-      title:'added To watchlist',
-      movieTitle:movie.title,
-      poster_path:movie.poster_path,
-      type:'watchlist',
-      createdAt:date
-    }))
+    const date = new Date();
+    dispatch(
+      addToRecentActivities({
+        tmdbId: movie.tmdbId,
+        title: "added To watchlist",
+        movieTitle: movie.title,
+        poster_path: movie.poster_path,
+        type: "watchlist",
+        createdAt: date,
+      })
+    );
   };
 
   return (
@@ -85,14 +82,12 @@ const HomeSlider = () => {
         {movies?.map((slid) => {
           return (
             <SwiperSlide key={slid.movieId}>
-              <div className="w-full relative">
-                <Image
-                  src={IMAGEPOSTER+slid.poster_path}
-                  width={700}
-                  height={700}
-                  alt="Movie Poster"
-                  className="w-full max-h-[700px] object-cover"
-                />
+              <div
+                className="w-full relative bg-cover bg-center h-[700px]"
+                style={{
+                  backgroundImage: `url(${IMAGEPOSTER + slid.poster_path})`,
+                }}
+              >
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(0,0,0,0.4)] to-black/90 flex items-start md:items-center pt-28 md:pt-64 lg:pt-0">
                   <div className="ml-2 md:ml-12 p-3 md-p-0 flex flex-col gap-3 max-w-xl text-center sm:text-left">
                     <h2 className="text-2xl sm:text-6xl mb-4">{slid.title}</h2>
@@ -108,10 +103,10 @@ const HomeSlider = () => {
                     </div>
 
                     {/* genres */}
-
                     <p className="text-sm sm:text-lg text-center sm:text-start">
                       {slid.overview}
                     </p>
+
                     <div className="flex gap-3 mt-3 justify-center sm:justify-start">
                       <button
                         onClick={() => {
@@ -121,25 +116,23 @@ const HomeSlider = () => {
                         aria-label="Watch Trailer"
                         className="bg-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 border border-transparent hover:border-primary hover:text-white h-[40px]  sm:h-auto"
                       >
-                        <span>
-                          <FaRegPlayCircle size={16} fill="white" />
-                        </span>
+                        <FaRegPlayCircle size={16} fill="white" />
                         Watch Trailer
                       </button>
+
                       <Link
                         href={`/pages/movies/${slid.tmdbId}`}
                         aria-label="More Info"
                         className="border border-primary text-sm p-3 flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary h-[40px]  sm:h-auto"
                       >
-                        <span>
-                          <BsExclamationCircle
-                            size={18}
-                            color="black"
-                            fill="white"
-                          />
-                        </span>
+                        <BsExclamationCircle
+                          size={18}
+                          color="black"
+                          fill="white"
+                        />
                         More Info
                       </Link>
+
                       <button
                         onClick={() =>
                           addToWatchlist({
@@ -149,11 +142,9 @@ const HomeSlider = () => {
                           })
                         }
                         aria-label="Add to Watchlist"
-                        className="border border-primary  text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto"
+                        className="border border-primary text-sm p-3 hidden sm:flex items-center gap-1 rounded-3xl text-white transition-all duration-150 hover:bg-primary hover:text-white h-[40px]  sm:h-auto"
                       >
-                        <span>
-                          <FaRegBookmark size={18} color="black" fill="white" />
-                        </span>
+                        <FaRegBookmark size={18} color="black" fill="white" />
                         Add to Watchlist
                       </button>
                     </div>
