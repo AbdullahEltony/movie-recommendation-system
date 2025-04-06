@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import SectionTitle from "../SectionTitle";
 import { IoPlay } from "react-icons/io5";
 import { IMAGEPOSTER } from "@/constants";
