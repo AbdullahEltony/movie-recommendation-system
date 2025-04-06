@@ -69,11 +69,11 @@ const HomeSlider = () => {
                       <span>{slid.release_date}</span>
                     </div>
                     <div className="flex gap-3 flex-wrap justify-center sm:justify-start">
-                      {slid.genresDetails.map((gen, i) => (
+                      {/* {slid.genresDetails.map((gen, i) => (
                         <span key={i} className="text-sm sm:text-[16px]">
                           {gen}
                         </span>
-                      ))}
+                      ))} */}
                     </div>
                     <p className="text-sm sm:text-lg text-center sm:text-start">
                       {slid.overview}
