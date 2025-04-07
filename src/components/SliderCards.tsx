@@ -9,7 +9,7 @@ import MovieCard from "./MovieCard";
 import { CardSkeleton } from "./skeletons";
 interface SliderProps {
   movieList:
-    | {
+    {
         id?: number;
         movieId: number;
         tmdbId: number;

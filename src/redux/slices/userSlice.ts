@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserState {
-  name: string | null;
-  profileImage: string | null;
-}
-
-const initialState: UserState = {
+const initialState: { name: string | null; profileImage: string | null } = {
   name: null,
   profileImage: null,
 };
@@ -17,7 +12,9 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.name = action.payload.name;
       state.profileImage = action.payload.profileImage;
-      
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(action.payload));
+      }
     },
     clearUser: (state) => {
       state.name = null;

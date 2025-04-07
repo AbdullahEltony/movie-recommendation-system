@@ -4,6 +4,8 @@ export type movieType = {
     image: string
     rating?: number
 }
+
+
 export type Movie = {
     movieId: number;
     tmdbId: number;
@@ -13,5 +15,11 @@ export type Movie = {
     runtime: number;
     release_date: string;
     trailer_path: string;
-    genresDetails: string[] ; // Change to `Genre[]` if you define a Genre type
+    actors?: {
+      id: number;
+      name: string;
+      character: string;
+      profilePath: string;
+    }[]
+    genresDetails?: string[] ; // Change to `Genre[]` if you define a Genre type
   };

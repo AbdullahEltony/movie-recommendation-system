@@ -10,7 +10,6 @@ const renderLinks = (links: NavLink[], pathname: string) => {
   return links.map((link) => {
     const Icon = icons[link.icon];
     const isActive = pathname === link.href;
-
     return (
       <li key={link.name} className="relative text-lg">
         <Link
@@ -38,7 +37,7 @@ export default function Sidenav() {
   return (
     <>
       <div className="w-48 h-screen text-white bg-secondaryBg border-r fixed z-50 border-gray-800 hidden md:block">
-        <Link href={"/"} className="py-5">
+        <Link href={"/pages"} className="py-5">
           <Image
             src="/logo.svg"
             width={80}

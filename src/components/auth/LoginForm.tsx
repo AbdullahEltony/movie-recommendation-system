@@ -52,7 +52,7 @@ const LoginForm = () => {
       const user = await response.json();
       dispatch(
         setUser({
-          name: "Abdullah",
+          name: user.fullName,
           profileImage: null,
         })
       );

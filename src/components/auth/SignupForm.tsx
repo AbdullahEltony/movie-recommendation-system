@@ -41,6 +41,7 @@ const SignupForm = () => {
   const onSubmit = async (data: SignupFormData) => {
     try {
       const formattedData = { ...data, birthDay:FormatDate(data.birthDay) };
+      console.log(FormatDate(data.birthDay));
       const response = await fetch(`/api/Auth/register`, {
         method: "POST",
         headers: {
