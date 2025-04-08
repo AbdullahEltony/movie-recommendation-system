@@ -21,5 +21,8 @@ export type Movie = {
       character: string;
       profilePath: string;
     }[]
-    genresDetails?: string[] ; // Change to `Genre[]` if you define a Genre type
+    genresDetails?: {
+      id:number,
+      name:string
+    }[] ; // Change to `Genre[]` if you define a Genre type
   };

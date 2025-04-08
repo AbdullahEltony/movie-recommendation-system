@@ -26,7 +26,10 @@ type Props = {
   time: number | undefined;
   date: string | undefined;
   poster_path: string | undefined;
-  geners: string[] | undefined;
+  geners: {
+    id:number,
+    name:string
+  }[] | undefined;
 };
 
 const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
@@ -130,16 +133,16 @@ const MovieInfo = ({ info, loading }: { info: Props; loading: boolean }) => {
               </span>
               <span>{formatDuration(info.time)}</span>
             </div>
-            {/* <ul className="flex gap-2 items-center flex-wrap">
+            <ul className="flex gap-2 items-center flex-wrap">
               {info.geners?.map((gen) => (
                 <li
-                  key={gen}
+                  key={gen.id}
                   className="bg-[#AE251C] text-white px-3 py-1 italic rounded-md"
                 >
-                  {gen}
+                  {gen.name}
                 </li>
               ))}
-            </ul> */}
+            </ul>
             <p className="w-full md:max-w-[60%]">{info.overview}</p>
             <div className="flex items-center gap-3">
               <button

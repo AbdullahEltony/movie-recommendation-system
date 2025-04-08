@@ -32,9 +32,9 @@ export function formatDuration(minutes:number | undefined) {
 }
 
 export const formatTimestamp = (timestamp: string) => {
-  const date = new Date(timestamp); // No need for multiplication if it's already an ISO string
+  const date = new Date(timestamp); 
   if (isNaN(date.getTime())) {
-    return "Invalid date"; // Handle invalid date
+    return "Invalid date"; 
   }
 
   const now = new Date();

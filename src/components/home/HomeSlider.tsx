@@ -103,6 +103,16 @@ const HomeSlider = () => {
                     </div>
 
                     {/* genres */}
+                    <div className="flex gap-2 justify-center sm:justify-start">
+                      {slid.genresDetails?.map((genre) => (
+                        <span
+                          key={genre.id}
+                          className="flex basis-auto items-center italic text-sm font-semibold text-white"
+                        >
+                          {genre.name}
+                        </span>
+                      ))}
+                    </div>
                     <p className="text-sm sm:text-lg text-center sm:text-start">
                       {slid.overview}
                     </p>

@@ -1,41 +1,57 @@
 import React from "react";
+import SearchComponent from "./MovieSearch";
+import { Geners, Years } from "@/constants";
+interface Props {
+  handleFilterValue: (tye: string, value: string) => void;
+}
 
-const MoviesFilter = () => {
+const MoviesFilter = ({ handleFilterValue }: Props) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 bg-black p-4">
-      <select className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md">
-        <option>Year</option>
-        <option>2022</option>
-        <option>2023</option>
-        <option>2024</option>
-        <option>2025</option>
+      <select
+        className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md"
+        onChange={(e) => handleFilterValue("year", e.target.value)}
+      >
+        <option value={""}>Year</option>
+        {Years.map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
       </select>
-      <select className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md">
-        <option>Rating</option>
-        <option>0 - poor</option>
-        <option>1 - Bad </option>
-        <option>2 - Okay</option>
-        <option>3 - Good</option>
-        <option>4 - Very Good</option>
-        <option>5 - Exellent</option>
+      <select
+        className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md"
+        onChange={(e) => handleFilterValue("rate", e.target.value)}
+      >
+        <option value={""}>Rating</option>
+        <option value={"0"}>0 - poor</option>
+        <option value={"2"}>1 - Bad </option>
+        <option value={"2"}>2 - Okay</option>
+        <option value={"3"}>3 - Good</option>
+        <option value={"4"}>4 - Very Good</option>
+        <option value={"5"}>5 - Exellent</option>
       </select>
-      <select className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md">
-        <option>Popular</option>
-        <option>Most Popular</option>
-        <option>Less Popular</option>
+      <select
+        className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md"
+        onChange={(e) => handleFilterValue("popularity", e.target.value)}
+      >
+        <option value={""}>Popular</option>
+        <option value={"1"}>Most Popular</option>
+        <option value={"0"}>Less Popular</option>
       </select>
-      <select className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md">
-        <option>Geners</option>
-        <option>Romantic</option>
-        <option>Drama</option>
-        <option>Action</option>
-        <option>Geners</option>
-        <option>Comidy</option>
+      <select
+        className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md"
+        onChange={(e) => handleFilterValue("genre", e.target.value)}
+      >
+        <option value={""}>Geners</option>
+        {Geners.map((gener) => (
+          <option key={gener.Id} value={gener.Name}>
+            {gener.Name}
+          </option>
+        ))}
       </select>
-      <input
-        type="text"
-        placeholder="Search..."
-        className="col-span-2 lg:col-span-1 border border-gray-500 bg-black text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600"
+      <SearchComponent
+        handleFilterValue={(type, value) => handleFilterValue(type, value)}
       />
     </div>
   );

@@ -21,6 +21,7 @@ export default function Actors({
     <div className="bg-black mb-[4rem] mt-32 section max-h-[600px] overflow-auto custom-scrollbar">
       <SectionTitle title="Actors" />
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 bg-secondaryBg p-[1rem] rounded-xl">
+        {actors?.length === 0 && <p>No Actors Found</p>}
         {actors?.map((actor) => (
           <Link
             href={`/pages/actors/${actor.id}`}

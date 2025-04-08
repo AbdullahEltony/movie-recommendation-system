@@ -42,6 +42,7 @@ export default function Sidenav() {
             src="/logo.svg"
             width={80}
             height={70}
+            priority
             alt="logo"
             className="mx-auto w-[80px] h-[70px] object-contai mt-4"
           />

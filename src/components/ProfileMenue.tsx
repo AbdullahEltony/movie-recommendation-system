@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 
 export default function ProfileMenu() {
-  const {user} = useSelector((state:RootState)=> state);
+  const {name , profileImage} = useSelector((state:RootState)=> state.user);
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -39,9 +39,9 @@ export default function ProfileMenu() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="w-8 h-8 rounded-full border-2 border-primary">
-          {user.profileImage ? (
+          {profileImage ? (
             <Image
-              src={user.profileImage }
+              src={profileImage }
               alt="user"
               width={32}
               height={32}
@@ -49,7 +49,7 @@ export default function ProfileMenu() {
             />
           ) : (
             <span className="text-white text-lg font-semibold">
-              {user.name?.charAt(0).toUpperCase() || "U"}
+              {name?.charAt(0).toUpperCase() || "U"}
             </span>
           )}
         </div>

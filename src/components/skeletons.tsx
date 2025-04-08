@@ -46,11 +46,11 @@ export const MovieGridSkeleton = () => {
 
 export const CardSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg"></div>
       <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden sm:block"></div>
       <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden md:block"></div>
-      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden md:block"></div>
+      <div className="w-full h-[400px] bg-gray-800 animate-pulse rounded-lg hidden lg:block"></div>
     </div>
   );
 };
@@ -120,6 +120,13 @@ export const SkeletonMovieInfo = () => {
         <div className="flex items-center gap-4 mb-4">
           <div className="h-6 w-16 md:w-24 bg-gray-700 rounded animate-pulse"></div>
           <div className="h-6 w-12 bg-gray-700 rounded animate-pulse"></div>
+          <div className="h-6 w-16 bg-gray-700 rounded animate-pulse"></div>
+        </div>
+
+        {/* Genres */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <div className="h-6 w-16 bg-gray-700 rounded animate-pulse"></div>
+          <div className="h-6 w-16 bg-gray-700 rounded animate-pulse"></div>
           <div className="h-6 w-16 bg-gray-700 rounded animate-pulse"></div>
         </div>
 
