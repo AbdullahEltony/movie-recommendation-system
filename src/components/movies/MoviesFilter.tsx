@@ -43,7 +43,7 @@ const MoviesFilter = ({ handleFilterValue }: Props) => {
         className="border border-gray-500 bg-black text-white px-4 py-2 rounded-md"
         onChange={(e) => handleFilterValue("genre", e.target.value)}
       >
-        <option value={""}>Geners</option>
+        <option value={""}>Genre</option>
         {Geners.map((gener) => (
           <option key={gener.Id} value={gener.Name}>
             {gener.Name}

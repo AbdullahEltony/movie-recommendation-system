@@ -8,7 +8,7 @@ const Likes = () => {
 
   return (
     <div className="mt-5">
-      <SectionTitle title="Likes" />
+      <SectionTitle title="Liked Movies" />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 rounded-lg">
         {likedMovies?.length === 0 && <p>There is no Liked Movies yet</p>}
         {likedMovies?.map((movie) => (

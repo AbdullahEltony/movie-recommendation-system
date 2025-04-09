@@ -14,7 +14,7 @@ const UserWatchList = () => {
   const { data, loading } = useFetch<Movie[]>("/api/Movie/top-ten");
   return (
     <div className="mt-5">
-    <SectionTitle title="Recommend" />
+    <SectionTitle title="Recommend Movies" />
     {loading ? (
       <CardSkeleton />
     ) : (

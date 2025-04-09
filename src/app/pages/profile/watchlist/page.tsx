@@ -8,7 +8,7 @@ const UserWatchList = () => {
   const { watchlist: wathlistMovies } = useSelector((state: RootState) => state.watchlist);
   return (
     <div className="mt-5">
-      <SectionTitle title="Watchlist" />
+      <SectionTitle title="Watchlist Movies" />
       {wathlistMovies?.length === 0 && <p>Thre is no wathlist movies yet</p>}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 rounded-lg">
         {wathlistMovies?.map((movie) => (
