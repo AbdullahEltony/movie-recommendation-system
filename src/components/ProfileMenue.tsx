@@ -6,11 +6,10 @@ import { useRouter } from "next/navigation";
 import { CiLogout } from "react-icons/ci";
 import { LuUserRound } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-
+// import { useGetUser } from "@/hooks/useGetUser";
+import { useUser } from "@/context/UserContext";
 export default function ProfileMenu() {
-  const {name , profileImage} = useSelector((state:RootState)=> state.user);
+  const { user } = useUser();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -39,18 +38,23 @@ export default function ProfileMenu() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="w-8 h-8 rounded-full border-2 border-primary">
-          {profileImage ? (
+          {user?.profilePic && (
             <Image
-              src={profileImage }
+              src={user.profilePic}
               alt="user"
               width={32}
               height={32}
               className="w-full h-full rounded-full object-contain"
             />
-          ) : (
-            <span className="text-white text-lg font-semibold">
-              {name?.charAt(0).toUpperCase() || "U"}
-            </span>
+          )}
+          {!user.profilePic && (
+            <Image
+              src="/ueser-placeholder.jpg"
+              alt="user"
+              width={32}
+              height={32}
+              className="w-full h-full rounded-full object-contain"
+            />
           )}
         </div>
       </button>
@@ -87,6 +91,7 @@ export default function ProfileMenu() {
               onClick={() => {
                 setIsOpen(false);
                 router.push("/");
+                localStorage.removeItem("user");
                 document.cookie =
                   "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
               }}

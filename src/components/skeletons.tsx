@@ -97,7 +97,10 @@ export const ActorMoviesSkeleton = () => {
         {/* Movies Grid */}
         <div className="grid grid-cols-3 gap-4 p-4 overflow-y-auto custom-scrollbar">
           {Array.from({ length: 6 }).map((_, idx) => (
-            <div key={idx} className="bg-gray-800 h-48 rounded-md animate-pulse" />
+            <div
+              key={idx}
+              className="bg-gray-800 h-48 rounded-md animate-pulse"
+            />
           ))}
         </div>
       </div>
@@ -135,8 +138,10 @@ export const SkeletonMovieInfo = () => {
 
         {/* Buttons */}
         <div className="flex gap-4">
-          <div className="h-10 w-12 md:w-24 bg-gray-700 rounded-xl animate-pulse"></div>
-          <div className="h-10 w-32 md:w-40 bg-gray-700 rounded-xl animate-pulse"></div>
+          <div className="h-10 w-16 bg-gray-700 rounded-xl animate-pulse"></div>
+          <div className="h-10 w-16 bg-gray-700 rounded-xl animate-pulse"></div>
+          <div className="h-10 w-16 bg-gray-700 rounded-xl animate-pulse"></div>
+          <div className="h-10 w-16 bg-gray-700 rounded-xl animate-pulse"></div>
         </div>
       </div>
     </div>
@@ -181,6 +186,53 @@ export const SkeletonActors = () => {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+export const ReviewSkeletonCard = () => {
+  return (
+    <div className="max-w-xl sm:max-w-3xl md:max-w-4xl flex gap-4 bg-black rounded-lg">
+      {/* Movie Poster */}
+      <div className="w-[100px] h-[160px] sm:w-[190px] sm:h-[250px] bg-zinc-800 rounded-lg animate-pulse" />
+
+      {/* Content */}
+      <div className="flex-1 space-y-3">
+        {/* Review Box */}
+        <div className="w-5/6 p-3 rounded-lg mt-3 space-y-3">
+          {/* Title */}
+          <div className="w-2/3 h-6 bg-zinc-800 rounded animate-pulse" />
+
+          {/* Stars */}
+          <div className="flex gap-1">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-4 h-4 bg-gray-700 rounded-full" />
+            ))}
+          </div>
+
+          {/* Review Text */}
+          <div className="w-3/4 h-4 bg-gray-700 rounded animate-pulse" />
+          <div className="w-full h-4 bg-gray-700 rounded animate-pulse" />
+
+          {/* Date */}
+          <div className="flex items-center gap-2 mt-2">
+            <div className="w-20 h-4 bg-gray-700 rounded" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const SearchResultSkeleton = () => {
+  return (
+    <div className="flex flex-1 gap-4 min-w-[140px] bg-gray-700 p-2 rounded-md">
+      <div
+        className={`w-20 h-20 rounded bg-gray-500 animate-pulse`}
+      />
+      <div className="flex-1 flex items-center">
+        <div className="h-8 bg-gray-800 rounded w-1/3 animate-pulse"/>
       </div>
     </div>
   );
